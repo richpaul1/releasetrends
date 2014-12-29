@@ -1,0 +1,13 @@
+{
+  "name": "Bubble Exceptions",
+  "description": "Bubble Exceptions",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": ["js/background.js"]
+    }
+  },
+  "permissions": ["fullscreen","webview","https://www.dropbox.com/","https://www.google-analytics.com/","storage"],
+  "icons": { "16": "appdlogo-16.png", "128": "appdlogo-128.png" }
+}
