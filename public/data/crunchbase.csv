@@ -1,0 +1,211 @@
+Market,Region,Funding,Amount,Count,AVG
+"Ad Targeting","Boston","Seed",2200000,1,2200000
+"Adventure Travel","Boston","Convertible Note",15000,1,15000
+"Agriculture","Boston","Seed",4099998,2,2049999
+"Application Performance Monitoring","Boston","Venture",20000000,1,20000000
+"Art","Boston","Seed",10000,1,10000
+"B2B","Boston","Venture",2266000,1,2266000
+"Cloud Security","Boston","Venture",5671497,2,2835748
+"Databases","Boston","Venture",14200000,1,14200000
+"Design","Boston","Venture",668542,1,668542
+"Dod/Military","Boston","Venture",5299999,1,5299999
+"Employer Benefits Programs","Boston","Venture",1215000,1,1215000
+"Energy Efficiency","Boston","Angel",500000,1,500000
+"Enterprises","Boston","Seed",3000000,1,3000000
+"Enterprises","Boston","Venture",1114244,1,1114244
+"Gps","Boston","Angel",35000,1,35000
+"Human Resources","Boston","Seed",500000,1,500000
+"Internet Of Things","Boston","Convertible Note",118000,1,118000
+"Messaging","Boston","Seed",500000,1,500000
+"Music","Boston","Unknown",2208458,1,2208458
+"Nonprofits","Boston","Unknown",300000,1,300000
+"Nonprofits","Boston","Venture",260000,1,260000
+"Politics","Boston","Seed",150000,2,75000
+"Saas","Boston","Venture",9499986,1,9499986
+"Accounting","London","Seed",1000000,1,1000000
+"Artificial Intelligence","London","Seed",150000,1,150000
+"Auctions","London","Venture",8362900,1,8362900
+"B2B","London","Unknown",757625,1,757625
+"Business Services","London","Venture",1345374,1,1345374
+"Charities","London","Seed",2650000,1,2650000
+"Computer Vision","London","Seed",150000,1,150000
+"Concerts","London","Seed",28437,1,28437
+"Consumers","London","Equity Crowdfunding",2698918,1,2698918
+"Consumers","London","Seed",98534,1,98534
+"Coupons","London","Unknown",2424402,1,2424402
+"Crm","London","Venture",6000000,1,6000000
+"Databases","London","Seed",34833,1,34833
+"Design","London","Angel",249622,1,249622
+"Developer Apis","London","Venture",18000000,1,18000000
+"Digital Media","London","Venture",681000,1,681000
+"Email","London","Seed",762927,1,762927
+"Embedded Hardware And Software","London","Venture",7000000,1,7000000
+"Entertainment","London","Venture",7500000,1,7500000
+"Entrepreneur","London","Angel",1200000,1,1200000
+"Events","London","Seed",252760,1,252760
+"Finance Technology","London","Angel",1847507,1,1847507
+"Gamification","London","Venture",8009622,1,8009622
+"Guides","London","Unknown",15000,1,15000
+"Iaas","London","Seed",500000,1,500000
+"In-Flight Entertainment","London","Venture",40000000,1,40000000
+"Internet Marketing","London","Seed",1000000,1,1000000
+"Internet Of Things","London","Angel",100006,1,100006
+"Internet Of Things","London","Seed",151525,1,151525
+"Local Businesses","London","Equity Crowdfunding",1172519,1,1172519
+"Music","London","Seed",335000,1,335000
+"P2P Money Transfer","London","Venture",40000000,1,40000000
+"Reviews And Recommendations","London","Seed",2012004,1,2012004
+"Search","London","Unknown",332970,1,332970
+"Soccer","London","Unknown",18000000,1,18000000
+"Social Crm","London","Venture",1515251,1,1515251
+"Social Media","London","Seed",1000000,1,1000000
+"Ad Targeting","Los Angeles","Venture",8000000,1,8000000
+"Audio","Los Angeles","Unknown",25000,1,25000
+"Big Data Analytics","Los Angeles","Unknown",50000,1,50000
+"Charity","Los Angeles","Venture",9100000,1,9100000
+"Clean Energy","Los Angeles","Seed",60000,1,60000
+"Cloud Management","Los Angeles","Venture",10000000,1,10000000
+"Communications Infrastructure","Los Angeles","Venture",1575035,1,1575035
+"Consumer Electronics","Los Angeles","Angel",500000,1,500000
+"Crowdfunding","Los Angeles","Angel",1000000,1,1000000
+"Entertainment","Los Angeles","Convertible Note",420000,1,420000
+"File Sharing","Los Angeles","Venture",36000000,1,36000000
+"Messaging","Los Angeles","Venture",21000000,1,21000000
+"Pets","Los Angeles","Venture",2600000,1,2600000
+"Saas","Los Angeles","Venture",17000000,1,17000000
+"Search","Los Angeles","Venture",6349985,1,6349985
+"Social Media","Los Angeles","Seed",306000,2,153000
+"Sports","Los Angeles","Seed",2100000,1,2100000
+"Accounting","New York City","Unknown",1000000,1,1000000
+"Advice","New York City","Seed",900000,1,900000
+"Architecture","New York City","Seed",2000000,1,2000000
+"Art","New York City","Seed",150000,1,150000
+"Art","New York City","Venture",18480053,1,18480052
+"B2B","New York City","Seed",2100000,1,2100000
+"B2B","New York City","Unknown",50000,1,50000
+"B2B","New York City","Venture",3750000,1,3750000
+"Big Data Analytics","New York City","Angel",70000,1,70000
+"Brand Marketing","New York City","Angel",600000,1,600000
+"Brand Marketing","New York City","Venture",26000000,2,13000000
+"Celebrity","New York City","Angel",3000000,1,3000000
+"Chat","New York City","Venture",265000,1,265000
+"Clean Energy","New York City","Convertible Note",200000,1,200000
+"Cloud Security","New York City","Venture",8624862,1,8624862
+"Coffee","New York City","Seed",500000,1,500000
+"Colleges","New York City","Seed",500000,1,500000
+"Commercial Real Estate","New York City","Venture",8000000,1,8000000
+"Construction","New York City","Venture",8000000,1,8000000
+"Consumer Internet","New York City","Seed",2500000,1,2500000
+"Contact Management","New York City","Seed",1000000,1,1000000
+"Contests","New York City","Venture",15000000,1,15000000
+"Crowdfunding","New York City","Seed",1900000,1,1900000
+"Crowdfunding","New York City","Venture",12000000,2,6000000
+"Crowdsourcing","New York City","Unknown",1200000,1,1200000
+"Design","New York City","Venture",1850000,1,1850000
+"Diabetes","New York City","Unknown",199999,1,199999
+"Diabetes","New York City","Venture",650000,1,650000
+"Digital Media","New York City","Seed",1350000,2,675000
+"Digital Media","New York City","Venture",14000000,1,14000000
+"Employment","New York City","Venture",20000000,1,20000000
+"Events","New York City","Seed",1500000,1,1500000
+"File Sharing","New York City","Venture",1500000,1,1500000
+"Finance Technology","New York City","Seed",750000,1,750000
+"Fitness","New York City","Seed",20000,1,20000
+"Health Care Information Technology","New York City","Venture",3500000,1,3500000
+"Identity Management","New York City","Seed",99124,1,99124
+"Information Technology","New York City","Venture",1843567,1,1843567
+"Lifestyle","New York City","Seed",1000000,1,1000000
+"Local","New York City","Seed",1000000,1,1000000
+"Location Based Services","New York City","Unknown",15000000,1,15000000
+"Machine Learning","New York City","Seed",2049999,1,2049999
+"Messaging","New York City","Seed",3250000,3,1083333
+"Messaging","New York City","Venture",25000000,1,25000000
+"Music","New York City","Venture",3469151,3,1156384
+"Saas","New York City","Venture",15000000,1,15000000
+"Social Media","New York City","Seed",4300000,2,2150000
+"Sports","New York City","Seed",20000,1,20000
+"Sports","New York City","Venture",10000000,1,10000000
+"3D","SF Bay Area","Seed",1200000,1,1200000
+"3D","SF Bay Area","Venture",1490497,1,1490497
+"3D Printing","SF Bay Area","Seed",1000000,1,1000000
+"Accounting","SF Bay Area","Unknown",3000000,1,3000000
+"Accounting","SF Bay Area","Venture",40000000,2,20000000
+"Ad Targeting","SF Bay Area","Venture",57000000,1,57000000
+"Advice","SF Bay Area","Seed",650000,1,650000
+"Aerospace","SF Bay Area","Convertible Note",3170000,1,3170000
+"Aerospace","SF Bay Area","Venture",14200000,2,7100000
+"Agriculture","SF Bay Area","Venture",10000000,1,10000000
+"All Markets","SF Bay Area","Unknown",14000,1,14000
+"Artificial Intelligence","SF Bay Area","Seed",560000,1,560000
+"Auctions","SF Bay Area","Seed",500000,1,500000
+"Audio","SF Bay Area","Unknown",16600000,1,16600000
+"Audio","SF Bay Area","Venture",150000,1,150000
+"B2B","SF Bay Area","Angel",1800000,1,1800000
+"B2B","SF Bay Area","Seed",645000,3,215000
+"B2B","SF Bay Area","Unknown",1298670,2,649335
+"Big Data Analytics","SF Bay Area","Seed",25000,1,25000
+"Bitcoin","SF Bay Area","Seed",25000,1,25000
+"Business Services","SF Bay Area","Seed",325000,1,325000
+"Business Services","SF Bay Area","Venture",50000000,1,50000000
+"Celebrity","SF Bay Area","Seed",750000,1,750000
+"Charter Schools","SF Bay Area","Venture",33000000,1,33000000
+"Cloud Security","SF Bay Area","Venture",41300000,2,20650000
+"Coffee","SF Bay Area","Venture",25700000,1,25700000
+"Commercial Real Estate","SF Bay Area","Venture",7300000,1,7300000
+"Communities","SF Bay Area","Venture",2100000,1,2100000
+"Consumer Electronics","SF Bay Area","Venture",12393798,2,6196899
+"Consumer Goods","SF Bay Area","Seed",1500000,1,1500000
+"Consumers","SF Bay Area","Venture",35000000,1,35000000
+"Content Delivery","SF Bay Area","Venture",26000000,1,26000000
+"Cooking","SF Bay Area","Seed",3000000,1,3000000
+"Corporate It","SF Bay Area","Angel",1100000,1,1100000
+"Crm","SF Bay Area","Unknown",8919533,1,8919533
+"Crm","SF Bay Area","Venture",4825000,2,2412500
+"Crowdfunding","SF Bay Area","Unknown",1900000,1,1900000
+"Crowdfunding","SF Bay Area","Venture",14000000,1,14000000
+"Crowdsourcing","SF Bay Area","Venture",27639061,3,9213020
+"Cyber Security","SF Bay Area","Venture",25000000,1,25000000
+"Data Security","SF Bay Area","Unknown",625000,1,625000
+"Demographies","SF Bay Area","Venture",954964,1,954964
+"Design","SF Bay Area","Angel",100000,1,100000
+"Diabetes","SF Bay Area","Venture",7000000,1,7000000
+"Distribution","SF Bay Area","Seed",25000,1,25000
+"Email","SF Bay Area","Venture",4000000,1,4000000
+"Entertainment","SF Bay Area","Venture",9800000,1,9800000
+"Environmental Innovation","SF Bay Area","Venture",23000000,1,23000000
+"Facebook Applications","SF Bay Area","Venture",12510000,2,6255000
+"Finance Technology","SF Bay Area","Seed",600000,1,600000
+"Financial Services","SF Bay Area","Seed",2700000,1,2700000
+"Gambling","SF Bay Area","Angel",1700000,1,1700000
+"Human Computer Interaction","SF Bay Area","Venture",13500000,1,13500000
+"Identity","SF Bay Area","Venture",115656,1,115656
+"Identity Management","SF Bay Area","Venture",42000000,1,42000000
+"Information Services","SF Bay Area","Seed",4499960,1,4499960
+"Information Technology","SF Bay Area","Venture",1000000,1,1000000
+"Infrastructure","SF Bay Area","Venture",14500000,1,14500000
+"Internet Tv","SF Bay Area","Unknown",1966279,1,1966279
+"Ipad","SF Bay Area","Seed",1500000,1,1500000
+"Ipad","SF Bay Area","Venture",7000000,1,7000000
+"Local","SF Bay Area","Seed",1270000,3,423333
+"Local","SF Bay Area","Venture",17300000,1,17300000
+"Local Businesses","SF Bay Area","Venture",3500000,1,3500000
+"Location Based Services","SF Bay Area","Seed",820000,1,820000
+"Messaging","SF Bay Area","Angel",500000,1,500000
+"Messaging","SF Bay Area","Venture",9500000,2,4750000
+"Music","SF Bay Area","Product Crowdfunding",6225354,1,6225354
+"Music","SF Bay Area","Seed",1700000,1,1700000
+"Music","SF Bay Area","Venture",1100000,1,1100000
+"Network Security","SF Bay Area","Unknown",6000000,1,6000000
+"Networking","SF Bay Area","Venture",19000000,2,9500000
+"Open Source","SF Bay Area","Venture",15000000,1,15000000
+"Paas","SF Bay Area","Venture",6000000,1,6000000
+"Pets","SF Bay Area","Unknown",2039525,1,2039525
+"Predictive Analytics","SF Bay Area","Venture",12000000,1,12000000
+"Public Relations","SF Bay Area","Angel",200000,1,200000
+"Public Relations","SF Bay Area","Unknown",1000000,1,1000000
+"Public Relations","SF Bay Area","Venture",4000000,1,4000000
+"Saas","SF Bay Area","Seed",450000,1,450000
+"Saas","SF Bay Area","Venture",18000000,2,9000000
+"Shipping","SF Bay Area","Seed",2250000,1,2250000
+"Social Media","SF Bay Area","Seed",25000,1,25000
+"Social Media","SF Bay Area","Venture",19600000,2,9800000

@@ -1,0 +1,16 @@
+{
+  "name": "exceptappd",
+  "version": "0.0.0",
+  "homepage": "https://github.com/richpaul1/exceptappd",
+  "authors": [
+    "Richard Paul"
+  ],
+  "description": "Exception Visulization For AppDynamics",
+  "license": "MIT",
+  "dependencies": {
+    "famous": "~0.2.1",
+    "d3": "~3.4.8",
+    "requirejs": "~2.1.14",
+    "underscore": "~1.6.0"
+  }
+}
