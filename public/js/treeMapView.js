@@ -7,8 +7,8 @@ define(function(require, exports, module) {
   var StateModifier = require('famous/modifiers/StateModifier');
   var Easing        = require('famous/transitions/Easing');
   var Modifier      = require('famous/core/Modifier');
-
-  var treeMapView = function (viewSize, groups, data, title) {
+  
+  var treeMapView = function (viewSize, data) {
     var tooltip  = { w: 150, h: 60 };
     var margins  = {t: 50, r: 100, b: 20, l: 200};
     var view = new View({size: viewSize});
@@ -22,46 +22,39 @@ define(function(require, exports, module) {
 
     var bubble = d3.layout.pack()
         .sort(function (d) { return d.comb })
-        .size([diameter, diameter])
+        .size([diameter,diameter])
         .padding(2)
 
     for (var i = 0; i < data.length; i++) {
-      data[i].Amount = +data[i].Amount;
-      data[i].value  = data[i].Amount;
+      //data[i].value  = data[i].yavg;
+      data[i].value  = 500;
+      data[i].name   = data[i].tiername;
     }
 
-    var formatJSON = function (csvData, groups) {
-
-      var genGroups = function(data) {
-        return _.map(data, function(element, index) {
-          return { name : index, children : element };
-        });
-      };
-
-      var nest = function(node, curIndex) {
-        if (curIndex === 0) {
-          node.children = genGroups(_.groupBy(csvData, groups[0]));
-          _.each(node.children, function (child) {
-            nest(child, curIndex + 1);
-          });
-        }
-        else {
-          if (curIndex < groups.length) {
-            node.children = genGroups(
-              _.groupBy(node.children, groups[curIndex])
-            );
-            _.each(node.children, function (child) {
-              nest(child, curIndex + 1);
-            });
-          }
-        }
-        return node;
-      };
-      return nest({}, 0);
-    };
-
-    var root = formatJSON(data, groups);
+    var root = {children:[]};
+    
+    var blacklist = ['FQA1'];
+    
+    var apps = _.unique(_.pluck(data, 'appname'));
+    apps.forEach(function (app) {
+      if(blacklist.indexOf(app)<0){	
+	      var appData = data.filter(function (metric) {
+	        return metric.appname === app;
+	      });
+	      
+	      var value = 0;
+	      appData.forEach(function(metric){
+	    	  //value += metric.value;
+	    	  value += 500;
+	      });
+	
+	      //*1.5 so that the inner circle does not fill up the outer circle
+	      root.children.push({"name":app,"value":(value),"children":appData});
+      }
+    });
+    
     bubble.nodes(root);
+    console.log(root);
 
     var background = new Surface({
       size: viewSize,
@@ -75,7 +68,7 @@ define(function(require, exports, module) {
     var titleSurface = new Surface({
       size: [viewSize[1],margins.t],
       classes: ['title'],
-      content: 'Company Region: ' + title,
+      content: 'Trending Exceptions: ',
       properties: {
         zIndex: 5,
         fontSize: '20px',
@@ -98,25 +91,20 @@ define(function(require, exports, module) {
     });
 
     var getColor = function (d) {
-      if (d.depth === 0) {
-        return '#C0B9B2';
-      } else if (d.depth === 1){
-        return '#FFFFFF';
-      } else {
-        return color(d.Funding);
-      }
+        return color(d.color);
     }
 
     var getBubble = function (d) {
+      var factor = 2;    	
       var bubble = new Surface({
-        size: [d.r * 2, d.r * 2],
-        content: d.Market,
+        size: [d.r * factor, d.r * factor],
+        content: d.name,
         properties: {
-          fontSize: '9px',
+          fontSize: '20px',
           borderRadius: '50%',
           textAlign: 'center',
           color: 'white',
-          border: '1px solid #121E21',
+          border: '1px solid '+getColor(d),
           backgroundColor: getColor(d)
         }
       });
@@ -126,7 +114,7 @@ define(function(require, exports, module) {
         if (d.depth > 1) {
           tooltipSurface.setProperties({display: 'inline'});
 
-          var text = d.Region + "<br/>" + d.Market + "<br/>" + d.Funding + "<br/>$" + format(d.Amount);
+          var text = d.appname + " "+d.tiername;
           tooltipSurface.setContent(text);
 
           newX = d.x + margins.l - (tooltip.w / 2) + d.r;
@@ -172,20 +160,20 @@ define(function(require, exports, module) {
     };
 
     var recurseBubbles = function (node) {
-      view.add(getBubbleModifier(node, counter++)).add(getBubble(node));
-      if (node.children) {
-        for (var i = 0; i < node.children.length; i++) {
-          recurseBubbles(node.children[i]);
-        }
-      }
+    	var children = node.children;
+    	for (var i = 0; i < children.length; i++) {
+    		var node = children[i];
+    		node.color = i;
+    		view.add(getBubbleModifier(node,i)).add(getBubble(node));
+    		if(node.children){
+    			recurseBubbles(node);
+    		}
+    	}
     };
 
     view.add(background);
     view.add(tooltipModifier).add(tooltipSurface);
     view.add(titleModifier).add(titleSurface);
-
-    console.log(title);
-    console.log(root);
 
     recurseBubbles(root);
 

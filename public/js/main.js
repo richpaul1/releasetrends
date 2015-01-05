@@ -35,29 +35,9 @@ define(function(require, exports, module) {
     align: [0.5, 0.5]
   });
 
-  mainContext.add(centerModifier).add(scrollview);
-
-  d3.csv('http://localhost:3000/data/crunchbase.csv', function (err, data) {
-
-    var regions = _.unique(_.pluck(data, 'Region'));
-
-    regions.forEach(function (r) {
-      // console.log(r);
-      var regionData = data.filter(function (d) {
-        return d.Region === r;
-      });
-      // console.log(regionData);
-      var view = treeMapView(viewSize, ['Market', 'Funding'], regionData, r);
-      chartViews.push(view);
-    });
-
-    // for (var i = 0; i < 30; i++) {
-    //     var view = treeMapView(viewSize, ['make'], data.slice(0));
-    //     chartViews.push(view);
-    // }
-
-    scrollview.outputFrom(function(offset) {
-        return Transform.moveThen([0, -50, 350], Transform.rotateX(-0.004 * offset));
-    });
+  mainContext.add(centerModifier);
+  
+  d3.json('/trending', function (err, data) {
+    mainContext.add(treeMapView(viewSize,data));
   });
 });
