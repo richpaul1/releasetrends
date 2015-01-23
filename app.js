@@ -6,51 +6,49 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var scanner = require('./src/exceptionscanner.js');
 var config = require('./config.json');
 var manager = require('./src/manager.js');
-var trending = require('./routes/trending');
+var trending = require('./routes/trendingjson');
+var errorcodescounts = require('./routes/errorcodesjson');
+var errorsummaries = require('./routes/errorsummaryjson');
+var exceptionstatsjson = require('./routes/exceptionstatsjson.js');
+var exceptionlogicjson = require('./routes/exceptionlogicjson.js');
+var minutemetricjson = require('./routes/minutemetricjson');
+var chart = require('./routes/chart');
+var weeklymetricjson = require('./routes/weeklymetricjson');
+var schedule = require('node-schedule');
+var childProcess = require("child_process");
+var fs = require('fs');
+var config = require("./config.json");
+var moment = require("moment");
 
 var app = express();
 
-var childProcess = require("child_process"),
-	_finalizedData = null,
-	_httpRequestArray = [
-	    "http://w1.weather.gov/xml/current_obs/KAEJ.xml",
-	    "http://w1.weather.gov/xml/current_obs/KDEN.xml",
-	    "http://w1.weather.gov/xml/current_obs/KLMO.xml",
-	    "http://w1.weather.gov/xml/current_obs/KMYP.xml"];
-
-var data = {
-		"start":true,
-		"interval": 5000,/* Change this after testing. Recommend 60 * 60 * 1000 */
-		"content": _httpRequestArray,
-		"config" : config
-}
+var metricanalyzer;
+var errorcodeanalyzer;
+var cleanup;
+var gengraphs;
 
 var init = function(){
-	
-	//init the db.
 	manager.initApplications();
 	manager.initTiers();
+	manager.initBusinessTransactions();
 	
-	//manager.updateMinMetrics();
-	//manager.updateWeekMetrics();
+	metricanalyzer = childProcess.fork("./src/metricanalyzer");
+	metricanalyzer.send({"name":"metricanalyzer"});
 
-	//manager.fetchMetrics(function(metric){
-	//	console.log("typeof : "+typeof(metric.metrics[0].metricValues));
-	//});
-	//
-//	var metricupdater = childProcess.fork("./src/minmetricupdater");
-//	metricupdater.send({"name":"metricupdater","interval":6000});
-
-//	var metricupdater = childProcess.fork("./src/weekmetricupdater");
-//	metricupdater.send({"name":"metricupdater","interval":60000});
-
+	errorcodeanalyzer = childProcess.fork("./src/errorcodeanalyzer");
+	errorcodeanalyzer.send({"name":"errorcodeanalyzer"});
 	
-//	var metricanalyzer = childProcess.fork("./src/metricanalyzer");
-//	metricanalyzer.send({"name":"metricanalyzer","interval":1000});
+	cleanup = childProcess.fork("./src/cleanup");
+	cleanup.send({"name":"cleanup"});
+	
+//	gengraphs = childProcess.fork("./src/gengraphs");
+//	gengraphs.send({"name":"gengraphs"});
+
+//	manager.buildExceptionStats(17,328).then(function (data) {
+//		console.log("completed");
+//	},console.error);
 	
 }()
 
@@ -68,6 +66,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.get('/public/images/*', function (req,res)
+{
+    res.sendFile (__dirname+req.url);
+});
+
+app.use(express.static(__dirname + '/public/images'));
+
+
 //Make our db accessible to our router
 app.use(function(req,res,next){
     req.manager = manager;
@@ -75,8 +82,54 @@ app.use(function(req,res,next){
 });
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/trending',trending);
+app.use('/trendingjson',trending);
+app.use('/errorcodesjson',errorcodescounts);
+app.use('/minutemetricjson',minutemetricjson);
+app.use('/weeklymetricjson',weeklymetricjson);
+app.use('/errorsummaryjson',errorsummaries);
+app.use('/exceptionstatsjson',exceptionstatsjson);
+app.use('/exceptionlogicjson',exceptionlogicjson);
+
+app.get('/chart.html', function(req, res) {
+	var appid = parseInt(req.query.appid);
+	var tierid = parseInt(req.query.tierid);
+	req.manager.getMinuteMetrics(appid,tierid).then(function (data) {
+		res.render('chart',{"appid":appid,"tierid":tierid,"metricRec":data,"LastMinutes":config.trending_use_number_of_mins,"LastWeeks":config.trending_use_number_of_weeks,"FutureMinutes":config.trending_use_future_number_of_mins});
+	},console.error);
+});
+
+app.get('/dashboard.html',function(req,res){
+	var profile = req.query.profile;
+	if(!profile){
+		profile = "";
+	}
+	res.render('exceptiondashboard',{"profile":profile});
+});
+
+app.get('/errorcodesbyerror.html',function(req,res){
+	var date = req.query.date;
+	if(!date){
+		date = moment().format("MM-DD-YYYY");
+	}
+	res.render('errorcodes',{"date":date});
+});
+
+app.get('/errorsummary.html',function(req,res){
+	var controller;
+	if(config.https){
+		controller= "https://"+config.controller;
+	}else{
+		controller = "http://"+config.controller;
+	}
+	var errorcode = parseInt(req.query.errorcode);
+	var date = req.query.date;
+	res.render('errorsummary',{"errorcode":errorcode,"date":date,"controller":controller});
+});
+
+app.get('/tierdetails.html',function(req,res){
+	res.render('tierdetails',{"appid":req.query.appid,"tierid":req.query.tierid,"week":config.trending_use_number_of_weeks,"lastminutes":config.trending_use_number_of_mins});
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -109,5 +162,14 @@ app.use(function(err, req, res, next) {
     });
 });
 
+
+process.on('exit', function() {
+	  console.log("shutting down");
+	  manager.close();
+	  errorcodeanalyzer.close();
+	  metricanalyzer.close();
+	  cleanup.close();
+	  
+});
 
 module.exports = app;

@@ -8,36 +8,49 @@ define(function(require, exports, module) {
   var StateModifier = require('famous/modifiers/StateModifier');
   var ViewSequence  = require('famous/core/ViewSequence');
   var treeMapView   = require('treeMapView');
+  var EventHandler = require('famous/core/EventHandler');
 
   var el = document.getElementById("charts");
+  var profile = document.getElementById("profile").value;
   var mainContext = Engine.createContext(el);
   mainContext.setPerspective(500);
 
-
-  var chartViews = [];
-  var scrollview = new Scrollview({
-      margin: 50
-  });
-
-  Engine.pipe(scrollview);
-
-  var viewSequence = new ViewSequence({
-      array: chartViews,
-      loop: true
-  });
-  scrollview.sequenceFrom(viewSequence);
-
-  var viewSize = [1000, 600];
-
-  var centerModifier = new StateModifier({
-    size: viewSize,
-    origin: [0.5, 0.5],
-    align: [0.5, 0.5]
-  });
-
-  mainContext.add(centerModifier);
+  var viewSize = [1100, 800];
   
-  d3.json('/trending', function (err, data) {
-    mainContext.add(treeMapView(viewSize,data));
+  var metrics;
+  var view;
+  var eventHandler = new EventHandler();
+  
+  console.log("profile :"+profile);
+  
+  var url = '/trendingjson';
+  if(profile){
+	  url = url+"?profile="+profile;
+  }
+  
+  d3.json(url, function (err, data) {
+	metrics = data;
+	view = treeMapView(viewSize,data,eventHandler)
+    mainContext.add(view);
+	
+	var index = 0;
+	var length = metrics.length;
+	var interval = 10000;
+	if(length > 20)
+		interval = 7000;
+	if(length > 30)
+		interval = 5000;
+	setInterval(function () {
+		if(index > length){
+			location.reload(); 
+		}
+	    var graph = metrics[index++];
+	    if(graph){
+	    	console.log(graph.name+" "+graph.appid+" "+graph.id);
+	    	var graphdata = {"graph":graph.appid+"_"+graph.id};
+	    	eventHandler.emit("showGraph",graphdata);
+	    }
+	 }, interval);
   });
+  
 });

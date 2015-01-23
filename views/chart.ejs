@@ -1,0 +1,216 @@
+<!doctype>
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="lib/rickshaw/rickshaw.min.css">
+<script src="lib/rickshaw/vendor/d3.min.js"></script>
+<script src="lib/rickshaw/vendor/d3.layout.min.js"></script>
+<script src="lib/rickshaw/rickshaw.min.js"></script>
+
+<style>
+.titleleft {
+	display : block;
+	position: relative;
+	font-size: 12px;
+	font-family: Arial, sans-serif;
+	color : black;
+	margin-left:150px;
+	padding : 10px;
+	text-transform: uppercase;
+}
+
+
+#chart_container {
+	position: relative;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#chart {
+	display: inline-block;
+	margin-left: 40px;
+}
+#y_axis {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 40px;
+}
+#legend {
+	display: block;
+	color : black;
+	background :white;
+}
+
+#chart_container2 {
+	position: relative;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#chart2 {
+	display: inline-block;
+	margin-left: 40px;
+}
+#y_axis2 {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 40px;
+}
+#legend2 {
+	display: block;
+	color : black;
+	background :white;
+}
+
+.line {
+	display: inline-block;
+	margin: 0 0 0 10px;
+	padding: 5px;
+}
+
+.rickshaw_legend{
+padding: 2px;
+margin-left: 22px;
+}
+
+
+</style>
+</head>
+<body>
+<div><span class="titleleft"><%= parseInt(metricRec.factor) %> <%= metricRec.tiername %> - <%= metricRec.appname %></span></div>
+<div>
+	<div id="chart_container">
+		<div id="y_axis"></div>
+		<div id="chart"></div>
+	</div>
+	<div id="legend">
+	</div>
+</div>
+<div>
+	<div id="chart_container2">
+		<div id="y_axis2"></div>
+		<div id="chart2"></div>
+	</div>
+	<div id="legend2"></div>
+</div>
+<script>
+function formatDate(millis) {
+  var date = new Date(millis);
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
+  //return date.getMonth()+1 + "/" + date.getDate() +"  " + strTime;
+}
+
+var weekAverage;
+
+var url = '/minutemetricjson/<%= appid %>/<%= tierid %>';
+var palette = new Rickshaw.Color.Palette();
+d3.json(url, function (metrics, err) {
+	weekAverage = metrics.weekavg;
+	var data = [];
+	var avg  = [];
+	var future = [];
+	var count = 1;
+	var seriesData = [];
+	var b1 = metrics.b1;
+	var b0 = metrics.b0;
+	var maxTime=0;
+	metrics.minmetrics[0].metricValues.forEach(function (app) {
+		console.log("metric : "+ JSON.stringify(app));
+		var startTime = app.startTimeInMillis*1;
+		if(startTime > maxTime)
+			maxTime = startTime;
+	
+	    var x = app.startTimeInMillis/1000;
+	    var date = new Date(app.startTimeInMillis);
+	    //console.log("date : "+date.toString()+ " raw = "+app.startTimeInMillis+" maxStartTime "+maxTime);
+		data.push({"x":x,"y":app.value});
+		avg.push({"x":x,"y":weekAverage});	
+		future.push({"x":x,"y":(b1*count + b0)});
+		count++;
+	});
+	
+	seriesData.push({"name":"Next <%=FutureMinutes%> Mins : "+parseInt(metrics.future15),"data":future,"color":"#D91A4A"});
+	seriesData.push({"name":"Last <%=LastMinutes%> Mins : "+parseInt(metrics.yavg)+" @ "+formatDate(maxTime),"data":data,"color":"#4682B4"});
+	seriesData.push({"name":"<%=LastWeeks%> Week Avg : "+weekAverage,"data":avg,"color":"#73C03A"});
+	
+	var graph = new Rickshaw.Graph( {
+		element: document.querySelector("#chart"),
+		width: 400,
+		height: 200,
+		renderer: 'line',
+		series: seriesData
+	} );
+	
+	var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
+	
+	var y_axis = new Rickshaw.Graph.Axis.Y( {
+		graph: graph,
+		orientation: 'left',
+		tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+		element: document.getElementById('y_axis'),
+	} );	
+	
+	var legend = new Rickshaw.Graph.Legend( {
+		element: document.querySelector('#legend'),
+		graph: graph
+	} );
+
+	graph.render();
+	
+	var weekurl = '/weeklymetricjson/<%= appid %>/<%= tierid %>';
+	d3.json(weekurl, function (metrics, err) {
+	
+		//console.log("metrics :"+JSON.stringify(metrics));
+		var data = [];
+		var avg  = [];
+		var seriesData = [];
+			
+		metrics.weekmetrics[0].metricValues.forEach(function (app) {
+			//console.log("metric : "+ JSON.stringify(app));
+	    	var x = app.startTimeInMillis/1000;
+	    	//var date = new Date(app.startTimeInMillis);
+	    	//console.log("date : "+date.toString());
+			data.push({"x":x,"y":app.value});
+			avg.push({"x":x,"y":weekAverage});	
+		});
+		
+		seriesData.push({"name":"Last <%=LastWeeks%> Week","data":data,"color":"#4682B4"});
+		seriesData.push({"name":"<%=LastWeeks%> Week Avg : "+weekAverage,"data":avg,"color":"#73C03A"});
+	
+		var graph = new Rickshaw.Graph( {
+			element: document.querySelector("#chart2"),
+			width: 400,
+			height: 200,
+			renderer: 'line',
+			series: seriesData
+		} );
+		
+		var x_axis = new Rickshaw.Graph.Axis.Time({graph: graph, timeUnit: (new Rickshaw.Fixtures.Time()).unit('day')})
+		
+		var y_axis = new Rickshaw.Graph.Axis.Y( {
+			graph: graph,
+			orientation: 'left',
+			tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+			element: document.getElementById('y_axis'),
+		} );	
+		
+		var legend = new Rickshaw.Graph.Legend( {
+			element: document.querySelector('#legend2'),
+			graph: graph
+		} );
+	
+		graph.render();
+	
+	});
+});
+
+
+</script>
+</body>
+</html>

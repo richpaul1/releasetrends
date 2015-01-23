@@ -11,6 +11,7 @@
     "famous": "~0.2.1",
     "d3": "~3.4.8",
     "requirejs": "~2.1.14",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "rickshaw": "~1.5.1"
   }
 }

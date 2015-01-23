@@ -1,15 +1,18 @@
 body {
   color: white;
   font-family: arial, Sans-Serif;
-  background-color: #A5A9AA;
+  background-color: white;
 }
 
 .title {
-  padding-top: 10px;
+  padding-top: 2px;
+   font: bold 8px "Helvetica Neue", Sans-Serif;
+   font-stretch: condensed;
+  text-decoration: none;
 }
 
 #charts {
-  height: 650px;
+  height: 800px;;
 }
 
 #intro {
@@ -18,17 +21,62 @@ body {
 
 .tooltip {
   display: none;
-  background: #45484B;
-  border: 2px solid white;
+  background: white;
   pointer-events: none;
-  padding: 5px 10px;
+  padding: 5px 5px;
   color: white;
-  border-radius: 10px;
-  margin-top: 10px;
+  font-stretch: condensed;
+  text-decoration: none;
+}
+
+.exception {
+  background: #45484B;
+  border: 1px solid white;
+  pointer-events: none;
+  padding: 2px 2px;
+  color: white;
+  border-radius: 2px;
+  margin-top: 2px;
   text-align: center;
-  font: bold 10px "Helvetica Neue", Sans-Serif;
+  font: bold 8px "Helvetica Neue", Sans-Serif;
   font-stretch: condensed;
   text-decoration: none;
   text-transform: uppercase;
-  box-shadow: 0 0 7px black;
+  box-shadow: 0 0 2px black;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
+
+.factor {
+  padding: 2px 2px;
+  color: red;
+  text-align: center;
+  font: bold 14px "Helvetica Neue", Sans-Serif;
+  font-stretch: condensed;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+.apptitle {
+  pointer-events: none;
+  padding: 2px;
+  color: white;
+  top-margin:5px;
+  text-align: center;
+  font: bold 12px "Helvetica Neue", Sans-Serif;
+  font-stretch: condensed;
+  text-decoration: none;
+  z-index:10;
+}
+
+
+/* padding-right: 15px; */
