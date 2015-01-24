@@ -1,11 +1,12 @@
 var system = require('system');
 var fs = require('fs');
 
-var url     = system.args[1];
-var appid 	= system.args[2];
-var tierid 	= system.args[3];
+var dir     = system.args[1];
+var url     = system.args[2];
+var appid 	= system.args[3];
+var tierid 	= system.args[4];
 
-fs.changeWorkingDirectory(fs.workingDirectory+"/public/images");
+fs.changeWorkingDirectory(dir);
 
 var page = require('webpage').create();
 page.settings.userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"	
