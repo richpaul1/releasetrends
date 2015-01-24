@@ -1,7 +1,7 @@
 var config = require('../config.json');
 var restManager = require('./restmanager');
 var monk = require('monk');
-var Q = require('Q');
+var Q = require('q');
 require('q-foreach')(Q);
 
 var moment = require('moment');
