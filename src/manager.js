@@ -38,6 +38,7 @@ exports.close = function(){
 } 
 
 exports.initApplications = function(){
+	var whitelist = config.whitelist;
 	var controller = config.controller;
 	restManager.getAppJson(controller,function(response){
 		var controllerUrl;
@@ -49,15 +50,17 @@ exports.initApplications = function(){
 		
 		japps = JSON.parse(response);
 		japps.forEach(function(app)  {
-			var appRecord = { id:app.id, name : app.name,controller : controller,controller_url : controllerUrl} ;
-			dbApps.find({"id":app.id}, function(err, docs){
-				var doc = docs[0];
-				if(!doc){
-					dbApps.insert(appRecord);
-				}else{
-					dbApps.update({ _id: doc._id }, { $set: { name: app.name} });
-				}
-			});
+			if(!whitelist || whitelist.length==0 || whitelist.indexOf(app.name) > -1){
+				var appRecord = { id:app.id, name : app.name,controller : controller,controller_url : controllerUrl} ;
+				dbApps.find({"id":app.id}, function(err, docs){
+					var doc = docs[0];
+					if(!doc){
+						dbApps.insert(appRecord);
+					}else{
+						dbApps.update({ _id: doc._id }, { $set: { name: app.name} });
+					}
+				});
+			}
 		});
 	});
 }

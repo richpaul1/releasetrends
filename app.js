@@ -43,13 +43,6 @@ var init = function(){
 	cleanup = childProcess.fork("./src/cleanup");
 	cleanup.send({"name":"cleanup"});
 	
-//	gengraphs = childProcess.fork("./src/gengraphs");
-//	gengraphs.send({"name":"gengraphs"});
-
-//	manager.buildExceptionStats(17,328).then(function (data) {
-//		console.log("completed");
-//	},console.error);
-	
 }()
 
 
