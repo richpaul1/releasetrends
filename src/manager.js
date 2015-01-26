@@ -49,6 +49,7 @@ exports.initApplications = function(){
 		}
 		
 		japps = JSON.parse(response);
+		console.log("inserted number apps :"+japps.length);
 		japps.forEach(function(app)  {
 			if(!whitelist || whitelist.length==0 || whitelist.indexOf(app.name) > -1){
 				var appRecord = { id:app.id, name : app.name,controller : controller,controller_url : controllerUrl} ;
@@ -111,6 +112,7 @@ exports.initTiers = function(){
 	exports.fetchApps(function(app){
 		restManager.getTiersJson(app,function(response){
 			jtiers = JSON.parse(response);
+			console.log("inserted number tiers for :"+app.name+" : "+jtiers.length);
 			jtiers.forEach(function(tier)  {
 				var tierRecord = { "appid":app.id,"id":tier.id, "name": tier.name, "appname":app.name,"controller":app.controller,"controller_url":app.controller_url} ;
 				dbTiers.find({"appid":app.id,"id":tier.id}, function(err, tiers){
@@ -130,6 +132,7 @@ exports.initBusinessTransactions = function(){
 	exports.fetchApps(function(app){
 		restManager.fetchBusinessTransactions(app,function(response){
 			bts = JSON.parse(response);
+			console.log("inserted number bts for :"+app.name+" : "+bts.length);
 			bts.forEach(function(bt)  {
 				var btRecord = { "appid":app.id,"id":bt.id, "name": bt.name} ;
 				dbBTs.find({"appid":app.id,"id":bt.id}, function(err, results){
