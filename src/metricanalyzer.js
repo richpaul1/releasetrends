@@ -155,7 +155,9 @@ var analyze = function(dbTierMinMetric) {
 	manager.updateDBTierMinMetric(dbTierMinMetric);
 	if (trend) {
 		console.log("capture graph for "+dbTierMinMetric.appid+" "+dbTierMinMetric.id);
-		var childArgs = [ path.join(__dirname, 'screencapture.js'),__dirname+"/public/images",config.baseUrl,dbTierMinMetric.appid,dbTierMinMetric.id];
+		var dir = config.images;
+		console.log("dir :"+dir);
+		var childArgs = [ path.join(__dirname, 'screencapture.js'),dir,config.baseUrl,dbTierMinMetric.appid,dbTierMinMetric.id];
 		childProcess.execFile(binPath, childArgs,
 				function(err, stdout, stderr) {
 		});
