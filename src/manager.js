@@ -49,9 +49,9 @@ exports.initApplications = function(){
 		}
 		
 		japps = JSON.parse(response);
-		console.log("inserted number apps :"+japps.length);
 		japps.forEach(function(app)  {
 			if(!whitelist || whitelist.length==0 || whitelist.indexOf(app.name) > -1){
+				console.log("tracking app :"+app.name);
 				var appRecord = { id:app.id, name : app.name,controller : controller,controller_url : controllerUrl} ;
 				dbApps.find({"id":app.id}, function(err, docs){
 					var doc = docs[0];
