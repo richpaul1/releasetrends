@@ -261,7 +261,7 @@ exports.getWeeklyMetrics = function(appid, tierid, callback){
 exports.updateMinMetrics = function(callback){
 	console.log("fetching minute metrics");
 	exports.fetchTiers(function(tier){
-		//get metrics for last 15 mins
+		//get metrics for last configured mins
 		restManager.getTierMinMetric(tier,function(response){
 			if(response) {
 				var data = JSON.parse(response);
@@ -276,11 +276,11 @@ exports.updateMinMetrics = function(callback){
 						} else {
 							//console.log("updating minmetrics :"+exports.toString(tierMetric));
 							dbTierMetric.update({_id: metric._id}, {$set: {"minmetrics": data,"appname":tier.appname,"tiername":tier.name}});
-							//get avg for 1 week
+							//get avg for configured week
 							restManager.getTierWeekMetricRollup(tier,function(response){
 								if(response) {
 									var data = JSON.parse(response);
-									//console.log("updating weekmetric :"+exports.toString(tierMetric));
+									console.log("updating weekmetric :"+exports.toString(tierMetric));
 									dbTierMetric.update({_id: metric._id}, {$set: {"weekmetric": data}});
 								}
 							});
@@ -299,7 +299,7 @@ exports.updateMinMetrics = function(callback){
 exports.updateWeekMetrics = function(callback){
 	console.log("fetching week metrics");
 	exports.fetchTiers(function(tier){
-		//get metrics for last 15 mins
+		//get metrics for last configured weeks
 		restManager.getTierWeekMetric(tier,function(response){
 			if(response) {
 				var data = JSON.parse(response);
@@ -412,7 +412,7 @@ exports.getErrorCodeSummaries = function(errorCode,date){
 }
 
 exports.cleanupErrorData = function(){
-	var retention = parseInt(config.error_code_retention);
+	var retention = parseInt(config.error_code_retention_days);
 	var date = moment().subtract(retention, 'days');
 	var millis = date.valueOf();
 	dbErrorCodes.col.remove({"time": {"$lte": millis}},function(err, removed){

@@ -40,6 +40,7 @@ define(function(require, exports, module) {
 		interval = 7000;
 	if(length > 30)
 		interval = 5000;
+	
 	setInterval(function () {
 		if(index > length){
 			location.reload(); 

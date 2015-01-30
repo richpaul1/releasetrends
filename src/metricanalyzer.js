@@ -86,6 +86,17 @@ var analyze = function(dbTierMinMetric) {
 
 	var xavg = average(x);
 	var yavg = average(y);
+	
+	var weeklyAverage = dbTierMinMetric.weekmetric[0].metricValues[0].value;
+	if (!weeklyAverage) {
+		weeklyAverage = 1;
+	}else if(yavg <= weeklyAverage){
+		//it is not trending
+		dbTierMinMetric.trend = "F";
+		manager.updateDBTierMinMetric(dbTierMinMetric);
+		return;
+	}
+	
 
 	calclog("xavg = " + xavg);
 	calclog("yavg = " + yavg);
@@ -129,10 +140,7 @@ var analyze = function(dbTierMinMetric) {
 	var futureOneMinuteMark = b1 * (minute_duration+1) + b0;
 	var futureMinuteMark = b1 * (minute_duration+future_minute_duration) + b0;
 	calclog("future15 : " + futureMinuteMark);
-	var weeklyAverage = dbTierMinMetric.weekmetric[0].metricValues[0].value;
-	if (!weeklyAverage) {
-		weeklyAverage = 1;
-	}
+	
 	// generate some factor
 	var factor = futureMinuteMark / weeklyAverage;
 	calclog("factor : " + factor);
@@ -160,6 +168,5 @@ var analyze = function(dbTierMinMetric) {
 		childProcess.execFile(binPath, childArgs,
 				function(err, stdout, stderr) {
 		});
-		//manager.buildExceptionStats(dbTierMinMetric.appid,dbTierMinMetric.id);
 	}
 }
