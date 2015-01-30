@@ -280,7 +280,7 @@ exports.updateMinMetrics = function(callback){
 							restManager.getTierWeekMetricRollup(tier,function(response){
 								if(response) {
 									var data = JSON.parse(response);
-									console.log("updating weekmetric :"+exports.toString(tierMetric));
+									//console.log("updating weekmetric :"+exports.toString(tierMetric));
 									dbTierMetric.update({_id: metric._id}, {$set: {"weekmetric": data}});
 								}
 							});
