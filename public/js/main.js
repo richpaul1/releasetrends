@@ -15,7 +15,7 @@ define(function(require, exports, module) {
   var mainContext = Engine.createContext(el);
   mainContext.setPerspective(500);
 
-  var viewSize = [1100, 800];
+  var viewSize = [500, 500];
   
   var metrics;
   var view;

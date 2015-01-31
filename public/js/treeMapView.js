@@ -9,10 +9,22 @@ define(function(require, exports, module) {
   var Easing        = require('famous/transitions/Easing');
   var Modifier      = require('famous/core/Modifier');
   var EventHandler = require('famous/core/EventHandler');
+  var GridLayout = require('famous/views/GridLayout');
   
   var mouseActivity = false;
   
+  var newXLoc = 500; 
+  
   var treeMapView = function (viewSize, data,eventHandler) {
+	  
+	var grid = new GridLayout({
+	    dimensions: [2, 1],
+		size: viewSize
+	});
+	
+	var surfaces = [];
+	grid.sequenceFrom(surfaces);
+	  
     var margins  = {t: 5, r: 5, b: 5, l: 5};
     var view = new View({size: viewSize});
     var counter = 0;
@@ -27,7 +39,7 @@ define(function(require, exports, module) {
 
     var bubble = d3.layout.pack()
         .sort(function (d) { return d.comb })
-        .size([500,600])
+        .size([490,750])
         .padding(4)
 
     for (var i = 0; i < data.length; i++) {
@@ -72,7 +84,7 @@ define(function(require, exports, module) {
     var titleSurface = new Surface({
       size: [200,10],
       classes: ['title'],
-      content: 'Trending Exceptions: ',
+      content: '<a href="/">Home</a> > Trending Exceptions: ',
       properties: {
         fontSize: '12px',
         textAlign: 'left',
@@ -86,7 +98,7 @@ define(function(require, exports, module) {
     });
 
     var tooltipSurface = new ImageSurface({
-      size: [675, 700], //width and height
+      size: [550, 650], //width and height
       classes: ['tooltip']
     });
 
@@ -129,7 +141,7 @@ define(function(require, exports, module) {
       
       var textDiv;
       if(d.depth == 1){
-    	  d.textDiv = "<div class=\"apptitle\">["+d.appid+"] "+d.name+"</div>"
+    	  d.textDiv = "<div class=\"apptitle\">"+d.name+"</div>"
       }else{
     	  //d.textDiv = "<div class=\"exception\"><font class=\"factor\">"+parseInt(d.factor)+"</font> <a href=\""+d.controller_url+"/controller/#/location=APP_COMPONENT_MANAGER&timeRange=last_15_minutes&application="+d.appid+"&component="+d.id+"\">"+d.name+"</a></div>";
     	  d.textDiv = "<div class=\"exception\"><font class=\"factor\">"+parseInt(d.factor)+"</font>"+d.name+"</div>";
@@ -153,7 +165,6 @@ define(function(require, exports, module) {
       });
       
       bubble.on('click',function(e){
-    	  //var url = d.controller_url+"/controller/#/location=APP_COMPONENT_MANAGER&timeRange=last_15_minutes&application="+d.appid+"&component="+d.id;
     	  var url = "/tierdetails.html?appid="+d.appid+"&tierid="+d.id;
     	  window.open(url,'_blank');
       });
@@ -168,7 +179,7 @@ define(function(require, exports, module) {
             tooltipSurface.setProperties({display: 'inline',position:'relative',zIndex:'55'});
             tooltipSurface.setContent("/public/images/"+d.appid+"_"+d.id+".png");
 
-            newX = 510;
+            newX = newXLoc;
             newY = 0;
 
             tooltipModifier.setTransform(
@@ -234,7 +245,8 @@ define(function(require, exports, module) {
     view.add(background);
     view.add(titleModifier).add(titleSurface);
     recurseBubbles(root.children);
-    view.add(tooltipModifier).add(tooltipSurface);
+    surfaces.push(view);
+    surfaces.push(tooltipSurface);
     
     eventHandler.on("showGraph",function(data){
     	
@@ -245,7 +257,7 @@ define(function(require, exports, module) {
 		tooltipSurface.setProperties({display: 'inline',position:'relative',zIndex:'5'});
 		tooltipSurface.setContent("/public/images/"+data.graph+".png");
 		
-		newX = 510;
+		newX = newXLoc;
 		newY = 0;
 		
 		tooltipModifier.setTransform(
@@ -255,7 +267,7 @@ define(function(require, exports, module) {
     });
     
     
-    return view;
+    return grid;
   };
   
   module.exports = treeMapView;

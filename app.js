@@ -97,7 +97,7 @@ app.get('/dashboard.html',function(req,res){
 	res.render('exceptiondashboard',{"profile":profile});
 });
 
-app.get('/errorcodesbyerror.html',function(req,res){
+app.get('/errorcodes.html',function(req,res){
 	var date = req.query.date;
 	if(!date){
 		date = moment().format("MM-DD-YYYY");

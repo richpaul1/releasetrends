@@ -531,7 +531,7 @@ getExceptionUrl = function(app,exceptionId){
 
 exports.fetchExceptionData = function(appid,tierid){
 	var deferred = Q.defer();
-	dbTierExceptions.find({"appid":appid,"tierid":tierid}, function (err, data) {
+	dbTierExceptions.find({"appid":appid,"tierid":tierid},{ sort : { diff : -1 }}, function (err, data) {
 		if(err){
 			deferred.reject(err);
 		}else{
