@@ -1,4 +1,6 @@
 var async = require("async");
+var log4js = require('log4js');
+var log = log4js.getLogger("restmanager");
 var https = require("https");
 var http = require("http");
 http.globalAgent.maxSockets = 20;
@@ -29,10 +31,12 @@ var fetch = function(controller,url, parentCallBack){
 		});
 
 		response.on('error', function(err) {
-			console.log("Error : " + err);
+			log.error("Error : " + err);
 		})
 
 		response.on('end', function() {
+			//log.debug("url :"+url);
+			//log.debug("response :"+str);
 			parentCallBack(str);
 		});
 	}.bind(this)
@@ -88,13 +92,11 @@ exports.fetchBusinessTransactions = function (app,callback){
 
 exports.fetchExceptions = function(app,tier,callback){
 	var url = "/controller/rest/applications/"+app.id+"/metrics?metric-path=Errors|"+tier.name+"&output=JSON";
-	//console.log("fetchExceptions "+url);
 	fetch(app.controller,url,callback);
 }
 
 exports.fetchExceptionMinMetric = function(app,tier,exception,callback){
 	var url = "/controller/rest/applications/"+app.id+"/metric-data?metric-path=Errors|"+tier.name+"|"+exception.name+"|Errors%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins=15&output=JSON&rollup=false";
-	//console.log("fetchExceptionMinMetric "+url);
 	fetch(app.controller,url,callback);
 }
 

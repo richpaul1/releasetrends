@@ -1,3 +1,4 @@
+var log4js = require('log4js');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -22,12 +23,13 @@ var fs = require('fs');
 var config = require("./config.json");
 var moment = require("moment");
 
+var log = log4js.getLogger("app");
 var app = express();
-
 var metricanalyzer;
 var errorcodeanalyzer;
 var cleanup;
 var gengraphs;
+
 
 var init = function(){
 	manager.initApplications();
@@ -43,7 +45,7 @@ var init = function(){
 	
 }()
 
-
+app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -86,7 +88,7 @@ app.get('/chart.html', function(req, res) {
 	var tierid = parseInt(req.query.tierid);
 	req.manager.getMinuteMetrics(appid,tierid).then(function (data) {
 		res.render('chart',{"appid":appid,"tierid":tierid,"metricRec":data,"LastMinutes":config.trending_use_number_of_mins,"LastWeeks":config.trending_use_number_of_weeks,"FutureMinutes":config.trending_use_future_number_of_mins});
-	},console.error);
+	},log.error);
 });
 
 app.get('/dashboard.html',function(req,res){
@@ -125,7 +127,7 @@ app.get('/tierdetails.html',function(req,res){
 		var url = app.controller_url+"/controller/#/location=APP_COMPONENT_MANAGER&timeRange=last_15_minutes&application="+appid+"&component="+tierid;
 		console.log("URL : "+url);
 		res.render('tierdetails',{"url":url,"appid":appid,"tierid":tierid,"week":config.trending_use_number_of_weeks,"lastminutes":config.trending_use_number_of_mins});
-	},console.error);
+	},log.error);
 });
 
 
@@ -142,6 +144,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
+    	log.error("Something went wrong:", err);
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -153,6 +156,7 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
+	log.error("Something went wrong:", err);
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,

@@ -1,3 +1,5 @@
+var log4js = require('log4js');
+var log = log4js.getLogger("metricanalyzer");
 var manager = require("./manager");
 var schedule = require('node-schedule');
 var path = require('path');
@@ -22,7 +24,7 @@ var average = function(values) {
 var totalRefreshCount = -1; // This is way of refreshing the non trending tiers every 10 calls.
 
 var calclog = function(message) {
-	//console.log(message);
+	//log.debug(message);
 }
 
 var close = function(){
@@ -46,12 +48,12 @@ var exec = function(){
 	rule.minute = new schedule.Range(0, 59, minSchedule);
 
 	var j = schedule.scheduleJob(rule, function() {
-		console.log(new Date().toUTCString()+ " : scheduled job .."); 
+		log.info(new Date().toUTCString()+ " : scheduled job .."); 
 		manager.updateMinMetrics();
 		manager.updateWeekMetrics();
 		manager.fetchDbTierMetrics().then(
 				function(data) {
-					console.log(new Date().toUTCString()
+					log.info(new Date().toUTCString()
 							+ " : metric analyzer firing ...[" + data.length
 							+ "]");
 					data.forEach(function(metric) {
@@ -62,7 +64,7 @@ var exec = function(){
 }
 
 process.on('uncaughtException', function(err) {
-	console.log("metricanalyzer :"+err.message + "\n" + err.stack);
+	log.info("metricanalyzer :"+err.message + "\n" + err.stack);
 })
 
 var generateTestImage = function(appid, tierid){
@@ -163,7 +165,7 @@ var analyze = function(dbTierMinMetric) {
 	manager.updateDBTierMinMetric(dbTierMinMetric);
 	if (trend) {
 		var dir = config.images;
-		console.log("capture graph for "+dbTierMinMetric.appid+" "+dbTierMinMetric.id+" "+dir);
+		log.info("capture graph for "+dbTierMinMetric.appid+" "+dbTierMinMetric.id+" "+dir);
 		var childArgs = [ path.join(__dirname, 'screencapture.js'),dir,config.baseUrl,dbTierMinMetric.appid,dbTierMinMetric.id];
 		childProcess.execFile(binPath, childArgs,
 				function(err, stdout, stderr) {
