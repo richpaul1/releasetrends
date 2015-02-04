@@ -1,6 +1,7 @@
 var async = require("async");
 var https = require("https");
 var http = require("http");
+http.globalAgent.maxSockets = 20;
 var config = require('../config.json');
 var debug = require('debug')('monk:*');
 
@@ -87,12 +88,13 @@ exports.fetchBusinessTransactions = function (app,callback){
 
 exports.fetchExceptions = function(app,tier,callback){
 	var url = "/controller/rest/applications/"+app.id+"/metrics?metric-path=Errors|"+tier.name+"&output=JSON";
-	console.log("fetchExceptions "+url);
+	//console.log("fetchExceptions "+url);
 	fetch(app.controller,url,callback);
 }
 
 exports.fetchExceptionMinMetric = function(app,tier,exception,callback){
-	var url = "/controller/rest/applications/"+app.id+"/metric-data?metric-path=Errors|"+tier.name+"|"+exception.name+"|Errors%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins="+minDuration+"&output=JSON&rollup=true";
+	var url = "/controller/rest/applications/"+app.id+"/metric-data?metric-path=Errors|"+tier.name+"|"+exception.name+"|Errors%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins=15&output=JSON&rollup=false";
+	//console.log("fetchExceptionMinMetric "+url);
 	fetch(app.controller,url,callback);
 }
 

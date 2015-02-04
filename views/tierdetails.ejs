@@ -55,39 +55,92 @@ ga('send', 'pageview');
 		<img src="/public/images/<%=appid%>_<%=tierid%>.png"/>
 	</div>
 	<div id="errors" class="datagrid" ng-app="" ng-controller="errorController">
-		<p>Fetching exceptions that are above their averages for the last <b>15</b> minutes.</p>
+		<p><a href="<%=url%>" target="_blank">Click here to see exceptions in AppDynamics</a></p> 
+		<p>Fetching exceptions that are trending for the last <b>15</b> minutes.</p>
 		<table class="pure-table">
 			<thead>
 				<tr>
 			  		<th>Exception</th>
-					<th><%=week%> Week Avg</th>
 			  		<th>15 Minute Avg</th>
-			  		<th>Difference</th>
+			  		<th>15 Minute Max</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="err in exceptions" ng-class-odd="'alt'">
-				    <td><a href="{{err.url}}">{{err.name}}</a></td>
-				    <td>{{err.weekavg}}</td>
+				    <td><a href="{{err.url}}" target="_blank">{{err.name}}</a></td>
 				    <td>{{err.minavg }}</td>
-				    <td>{{err.diff }}</td>
+				    <td>{{err.max }}</td>
 				</tr>
 			</tbody>
 		</table>
-		<div id="waitmessage"><p>Please wait, this can take 1+ minutes.</p> <div id="spinner" class="throbber">	Loading...</div></div>
+		<div id="waitmessage"><p>Please wait, this can take 1+ minutes.</p> <div id="spinner" class="throbber">	Loading...</div>
+			<p ng-hide="response | isEmpty">{{response | json}}</p>	
+		</div>
+		
 	</div>
 </div>
 <script>
-function errorController($scope,$http) {
-  $http.get("/exceptionstatsjson/<%=appid%>/<%=tierid%>")
-  .success(function(response) {
-  		//console.log("response :"+JSON.stringify(response));
-  		document.getElementById("waitmessage").style.display = 'none';
-  		$scope.exceptions = response;
-  	})
-  .error(function(data, status, headers, config) {
-    	console.log(data+" "+status+" "+headers+" "+config);
-  });
+function errorController($scope,$http,$q) {
+  
+  		$scope.timeout = 300;
+        $scope.delay = 5;
+        
+        function httpRequestHandler () {
+            var timeout = $q.defer(),
+                result = $q.defer(),
+                timedOut = false,
+                httpRequest;
+            
+            setTimeout(function () {
+                timedOut = true;
+                timeout.resolve();
+            }, (1000 * $scope.timeout));
+            
+            httpRequest = $http({
+                method : 'get',
+                url: '/exceptionstatsjson/<%=appid%>/<%=tierid%>',
+                data: '',
+                cache: false,
+                timeout: timeout.promise
+            });
+            
+            httpRequest.success(function(data, status, headers, config) {
+                result.resolve(data);
+            });
+
+			httpRequest.error(function(data, status, headers, config) {
+                if (timedOut) {
+                    result.reject({
+                        error: 'timeout',
+                        message: 'Request took longer than ' + $scope.timeout + ' seconds.'
+                });
+                } else {
+                    result.reject(data);
+                }
+            });
+            
+            return result.promise;
+        }
+        
+        $scope.makeRequest = function () {
+            $scope.status = 'Requesting';
+            $scope.response = '';
+            
+            var httpRequest = httpRequestHandler();
+            
+            httpRequest.then(function (data) {
+                $scope.status = 'Complete';
+                document.getElementById("waitmessage").style.display = 'none';
+  				$scope.exceptions = data;
+            
+            }, function (error) {
+                $scope.status = 'Error';
+                $scope.response = error;            
+            });
+            
+        };
+  
+  		$scope.makeRequest();
   	
 }
 </script>

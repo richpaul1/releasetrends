@@ -118,7 +118,14 @@ app.get('/errorsummary.html',function(req,res){
 });
 
 app.get('/tierdetails.html',function(req,res){
-	res.render('tierdetails',{"appid":req.query.appid,"tierid":req.query.tierid,"week":config.trending_use_number_of_weeks,"lastminutes":config.trending_use_number_of_mins});
+	var appid = req.query.appid;
+	var tierid=req.query.tierid;
+	req.manager.fetchApp(appid).then(function(app){
+		
+		var url = app.controller_url+"/controller/#/location=APP_COMPONENT_MANAGER&timeRange=last_15_minutes&application="+appid+"&component="+tierid;
+		console.log("URL : "+url);
+		res.render('tierdetails',{"url":url,"appid":appid,"tierid":tierid,"week":config.trending_use_number_of_weeks,"lastminutes":config.trending_use_number_of_mins});
+	},console.error);
 });
 
 

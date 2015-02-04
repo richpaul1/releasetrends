@@ -25,7 +25,7 @@ define(function(require, exports, module) {
 	var surfaces = [];
 	grid.sequenceFrom(surfaces);
 	  
-    var margins  = {t: 5, r: 5, b: 5, l: 5};
+    var margins  = {t: 1, r: 5, b: 5, l: 5};
     var view = new View({size: viewSize});
     var counter = 0;
     var format = d3.format(",")
@@ -51,10 +51,6 @@ define(function(require, exports, module) {
     
     var apps = _.unique(_.pluck(data, 'appname'));
     
-    console.log("apps :"+JSON.stringify(apps));
-    
-    
-    
     apps.forEach(function (app) {
       var appData = data.filter(function (metric) {
         return metric.appname === app;
@@ -71,7 +67,6 @@ define(function(require, exports, module) {
       root.children.push({"name":app,"value":(value),"appid":appid,"children":appData});
     });
     
-    console.log("")
     bubble.nodes(root);
 
     var background = new Surface({
@@ -143,7 +138,6 @@ define(function(require, exports, module) {
       if(d.depth == 1){
     	  d.textDiv = "<div class=\"apptitle\">"+d.name+"</div>"
       }else{
-    	  //d.textDiv = "<div class=\"exception\"><font class=\"factor\">"+parseInt(d.factor)+"</font> <a href=\""+d.controller_url+"/controller/#/location=APP_COMPONENT_MANAGER&timeRange=last_15_minutes&application="+d.appid+"&component="+d.id+"\">"+d.name+"</a></div>";
     	  d.textDiv = "<div class=\"exception\"><font class=\"factor\">"+parseInt(d.factor)+"</font>"+d.name+"</div>";
       }
       

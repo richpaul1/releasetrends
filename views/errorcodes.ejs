@@ -25,7 +25,7 @@ body {
 </style>
 </head>
 <body>
-	<div><a href="/">Home</a> > Error Codes by Date <input type="text" id="datepicker"></div>
+	<div><a href="/">Home </a><span style="text-align:center;">> Error Codes by Date <input type="text" id="datepicker"></span></div>
 </body>
 <script>
 
@@ -48,7 +48,7 @@ $(document).ready(function(){
         "maxDate": new Date(),
         onSelect: function(date) {
         	
-            var newUrl = "/errorcodesbyerror.html?date="+getDateSelected(); 
+            var newUrl = "/errorcodes.html?date="+getDateSelected(); 
 			//console.log("load page :"+newUrl);
   			window.location.assign(newUrl);	
         }

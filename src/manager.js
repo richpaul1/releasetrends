@@ -8,6 +8,7 @@ var moment = require('moment');
 var db = monk(config.dbhost+":"+config.dbport+'/'+config.dbname);
 
 var dbApps = db.get('apps');
+dbApps.index({'id':1});
 
 var dbTiers = db.get('tiers');
 dbTiers.index({'appid':1,'id':1});
@@ -30,8 +31,7 @@ var dbErrorSummary = db.get('errorsummary');
 dbErrorSummary.index({'appid':1,'guid':1,'threadid':1});
 dbErrorSummary.index({'code':1});
 
-var dbTierExceptions = db.get('tierexceptions');
-dbTierExceptions.index({'appid':1,'tierid':1});
+var exception_min_average_lower_limit = config.exception_min_average_suspects_must_be_greater_than;
 
 exports.close = function(){
 	monk.close();
@@ -75,7 +75,7 @@ exports.fetchApps = function(callback){
 
 exports.fetchApp = function(appid){
 	var deferred = Q.defer();
-	dbApps.find({"id":appid}, function (err, apps) {
+	dbApps.find({"id":parseInt(appid)}, function (err, apps) {
 		if(err){
 			deferred.reject(err);
 		}else{
@@ -455,29 +455,28 @@ exports.processException = function(app,tier,exception){
 		var weekavg = 0;
 		var diff    = 0;
 		if(response){
-			var exceptionMin = JSON.parse(response)[0];
-			minavg = exceptionMin.metricValues[0].value; 
-			if( minavg > 0){
+			var exceptionMins = JSON.parse(response)[0];
+//			console.log("Exception metrics :"+JSON.stringify(exceptionMins));
+			
+			var max = 0;
+			var average = 0;
+			var value = 0;
+			var count = 0;
+			exceptionMins.metricValues.forEach(function(exceptionMetric){
+				value = exceptionMetric.value;
+				average = average + value;
+				count++;
+				if(value > max){
+					max = value;
+				}
+			});
+			average = average/count;
+			
+			if( max > average){
 				console.log("appid :"+app.id+" tierid :"+tier.id+" exception :"+JSON.stringify(exception));
-				console.log(JSON.stringify(exceptionMin));
-				id = getErrorIdFromMetricName(exceptionMin.metricName);
-				exports.fetchExceptionWeekMetric(app,tier,exception).then(function(response){
-					if(response){
-						var exceptionWeek = JSON.parse(response)[0];
-						console.log(JSON.stringify(exceptionWeek));
-						weekavg = exceptionWeek.metricValues[0].value;
-						diff = minavg - weekavg;
-						if(minavg >= weekavg){
-							var excRec = [{"appid":app.id,"tierid":tier.id,"errorid":id,"name":exception.name,"url":getExceptionUrl(app,id),"minavg":minavg,"weekavg":weekavg,"diff":diff}];
-							dbTierExceptions.insert(excRec);
-							deferred.resolve(excRec);
-						}else{
-							deferred.resolve();
-						}
-					}else{
-						deferred.resolve();
-					}
-				});
+				id = getErrorIdFromMetricName(exceptionMins.metricName);
+				var excRec = {"appid":app.id,"tierid":tier.id,"errorid":id,"name":exception.name,"url":getExceptionUrl(app,id),"minavg":parseInt(average),"max":max};
+				deferred.resolve(excRec);
 			}else{
 				deferred.resolve();
 			}
@@ -490,32 +489,34 @@ exports.processException = function(app,tier,exception){
 
 exports.buildExceptionStats = function(appid,tierid){
 	var deferred = Q.defer();
-	console.log("building exception stats :"+appid+" "+tierid);
-	dbTierExceptions.col.remove({"appid":appid,"tierid":tierid},function(err, removed){
-		console.log("removed :"+removed);
 		exports.fetchApp(appid).then(function (app) {
 			console.log(" app :"+app.id);
 			exports.fetchTier(appid,tierid).then(function(tier){
 				console.log(" tier :"+tier.id);
 				exports.fetchExceptions(app,tier).then(function(response){
 					var exceptions = JSON.parse(response)
-					console.log(" exceptions :"+JSON.stringify(exceptions));
-//					exceptions.forEach(function(exception){
-//						console.log("processing exception :"+JSON.stringify(exception));
-//						exports.processException(app,tier,exception);
-//					});
+					//console.log(" exceptions :"+JSON.stringify(exceptions));
 					
 					Q.forEach(exceptions, function (exception) {
-						  return exports.processException(app,tier,exception);
+						console.log("processing exception :"+JSON.stringify(exception))  
+						return exports.processException(app,tier,exception);
 					}).then(function (resolutions)
 					{
-					  deferred.resolve(resolutions);
-					  console.log('All exception items completed!',resolutions); // Will output the order in which items were done... [5,4,3,2,1]
+					  var data = [];
+					  resolutions.forEach(function(exception){
+						  if(exception){
+							  data.push(exception);
+						  }
+					  });
+					  
+					  //sort data 
+					  data.sort(function(a,b) { return parseInt(b.max) - parseInt(a.max) } );
+					  //console.log("Exception Data :"+JSON.stringify(data));
+					  deferred.resolve(data);
 					});
 				});
 			});
 		});
-	});		
 	return deferred.promise;
 }
 
@@ -527,18 +528,6 @@ getErrorIdFromMetricName = function(name){
 getExceptionUrl = function(app,exceptionId){
 	//https://orbitz-app.saas.appdynamics.com/controller/#/location=APP_ERROR_DASHBOARD&timeRange=last_15_minutes.BEFORE_NOW.-1.-1.15&application=19&error=209813
 	return app.controller_url+"/controller/#/location=APP_ERROR_DASHBOARD&timeRange=last_15_minutes.BEFORE_NOW.-1.-1.15&application="+app.id+"&error="+exceptionId;
-}
-
-exports.fetchExceptionData = function(appid,tierid){
-	var deferred = Q.defer();
-	dbTierExceptions.find({"appid":appid,"tierid":tierid},{ sort : { diff : -1 }}, function (err, data) {
-		if(err){
-			deferred.reject(err);
-		}else{
-			deferred.resolve(data);
-		}
-	});
-	return deferred.promise;
 }
 
 

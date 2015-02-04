@@ -7,10 +7,8 @@ router.get('/:appid/:tierid', function(req, res) {
 	var tierid = parseInt(req.params.tierid);
 	
 	req.manager.buildExceptionStats(appid,tierid).then(function (data) {
-		req.manager.fetchExceptionData(appid,tierid).then(function (exceptiondata) {
-			console.log("response :"+JSON.stringify(exceptiondata));
-			res.json(exceptiondata);
-		},console.error);
+		console.log("Sending :"+JSON.stringify(data));
+		res.json(data);
 	},console.error);
 	
 });
