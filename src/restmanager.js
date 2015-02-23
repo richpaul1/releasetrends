@@ -9,6 +9,7 @@ var debug = require('debug')('monk:*');
 
 var weekDuration = parseInt(config.trending_use_number_of_weeks) * (7*24*60);
 var minDuration = parseInt(config.trending_use_number_of_mins);
+var btMinDuration = config.bt_use_last_mins;
 
 var fetch = function(controller,url, parentCallBack){
 	var str = "";
@@ -100,7 +101,57 @@ exports.fetchExceptionMinMetric = function(app,tier,exception,callback){
 	fetch(app.controller,url,callback);
 }
 
+exports.fetchAllExceptionsMinMetric = function(app,tier,callback){
+	var url = "/controller/rest/applications/"+app.id+"/metric-data?metric-path=Errors|"+tier.name+"|*|Errors%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins=20&output=JSON&rollup=true";
+	fetch(app.controller,url,callback);
+}
+
 exports.fetchExceptionWeekMetric = function(app,tier,exception,callback){
 	var url = "/controller/rest/applications/"+app.id+"/metric-data?metric-path=Errors|"+tier.name+"|"+exception.name+"|Errors%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins="+weekDuration+"&output=JSON&rollup=true";
 	fetch(app.controller,url,callback);
 }
+
+exports.fetchExceptionWeekMetricNoRollUp = function(app,tiername,metricPath,callback){
+	var url = encodeURI("/controller/rest/applications/"+app.id+"/metric-data?metric-path="+metricPath+"&time-range-type=BEFORE_NOW&duration-in-mins="+weekDuration+"&output=JSON&rollup=false");
+	fetch(app.controller,url,callback);
+}
+
+exports.fetchBTMinuteAverageResponseTimes = function(app,callback){
+	var url = "/controller/rest/applications/production/metric-data?metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7C"+app.tier+"%7C"+app.bt+"%7CAverage%20Response%20Time%20%28ms%29&time-range-type=BEFORE_NOW&duration-in-mins=60";
+	fetch(app.controller,url,callback);
+}
+exports.fetchBTWeeklyAverageResponseTimes = function(app,callback){
+	var url = "/controller/rest/applications/production/metric-data?metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7C"+app.tier+"%7C"+app.bt+"%7CAverage%20Response%20Time%20%28ms%29&time-range-type=BEFORE_NOW&duration-in-mins="+weekDuration;
+	fetch(app.controller,url,callback);
+}
+
+exports.fetchBTMinuteAverageErrors = function(app,callback){
+	var url = "/controller/rest/applications/production/metric-data?metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7C"+app.tier+"%7C"+app.bt+"%7CErrors%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins=60";
+	fetch(app.controller,url,callback);
+}
+
+exports.fetchBTWeeklyAverageErrors = function(app,callback){
+	var url = "/controller/rest/applications/production/metric-data?metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7C"+app.tier+"%7C"+app.bt+"%7CErrors%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins="+weekDuration;
+	fetch(app.controller,url,callback);
+}
+
+exports.fetchBTErrorCodeSnapshots = function (app,callback){
+	var url = "/controller/rest/applications/"+app.id+"/request-snapshots?business-transaction-ids="+app.btid+"&time-range-type=BEFORE_NOW&duration-in-mins=15&output=JSON&user-experience=ERROR&need-props=true&first-in-chain=false";
+	fetch(app.controller,url,callback);
+}
+
+exports.fetchErrorsAndExceptionsWeeklyAverage = function (app,callback){
+	var url = "/controller/rest/applications/"+app.id+"/metric-data?metric-path=Errors|"+app.tier+"|*|Errors%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins="+weekDuration+"&output=JSON&rollup=true";
+	fetch(app.controller,url,callback);
+}
+
+exports.fetchErrorsAndExceptionsMinuteAverage = function (app,callback){
+	var url = "/controller/rest/applications/"+app.id+"/metric-data?metric-path=Errors|"+app.tier+"|*|Errors%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins="+btMinDuration+"&output=JSON&rollup=false";
+	fetch(app.controller,url,callback);
+}
+
+
+
+
+
+

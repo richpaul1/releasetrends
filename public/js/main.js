@@ -40,9 +40,22 @@ define(function(require, exports, module) {
 		interval = 7000;
 	if(length > 30)
 		interval = 5000;
+
+	var firstInterval = setInterval(function () {
+		if(index==0){
+		    var graph = metrics[index++];
+		    if(graph){
+		    	console.log(graph.name+" "+graph.appid+" "+graph.id);
+		    	var graphdata = {"graph":graph.appid+"_"+graph.id};
+		    	eventHandler.emit("showGraph",graphdata);
+		    }
+		}
+	 }, 50);
 	
-	setInterval(function () {
+	var mainInterval = setInterval(function () {
+		clearInterval(firstInterval);
 		if(index > length){
+			clearInterval(mainInterval);
 			location.reload(); 
 		}
 	    var graph = metrics[index++];

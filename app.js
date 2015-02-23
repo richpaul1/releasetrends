@@ -28,7 +28,7 @@ var app = express();
 var metricanalyzer;
 var errorcodeanalyzer;
 var cleanup;
-var gengraphs;
+var btmetricscheduler;
 
 
 var init = function(){
@@ -42,6 +42,9 @@ var init = function(){
 	
 	cleanup = childProcess.fork("./src/cleanup");
 	cleanup.send({"name":"cleanup"});
+//	btmetricscheduler = childProcess.fork("./src/btmetricscheduler");
+//	btmetricscheduler.send({"name":"btmetricscheduler"})
+	
 	
 }()
 
@@ -171,6 +174,7 @@ process.on('exit', function() {
 	  errorcodeanalyzer.close();
 	  metricanalyzer.close();
 	  cleanup.close();
+	  btmetricscheduler.close();
 	  
 });
 

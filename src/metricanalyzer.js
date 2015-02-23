@@ -8,6 +8,7 @@ var childProcess = require('child_process');
 var binPath = phantomjs.path;
 var fs = require('fs');
 var config = require('../config.json');
+var trend = require("./trend");
 
 var workingDir;
 var average = function(values) {
@@ -35,6 +36,22 @@ process.on('message', function(msg) {
 	exec();
 })
 
+function metricWrapper (record) {
+    this.record = record;
+    
+    metricWrapper.prototype.getMinuteMetrics = function(){
+    	return this.record.minmetrics[0].metricValues;
+    }
+    
+    metricWrapper.prototype.getWeeklyAverage = function(){
+    	return this.record.weekmetric[0].metricValues[0].value;
+    }
+    
+    metricWrapper.prototype.getMetricRecord = function(){
+    	return this.record;
+    }
+}
+
 var exec = function(){
 	
 	if(totalRefreshCount > 10){
@@ -57,7 +74,17 @@ var exec = function(){
 							+ " : metric analyzer firing ...[" + data.length
 							+ "]");
 					data.forEach(function(metric) {
-						analyze(metric);
+						trend.calculateTrend(new metricWrapper(metric),function(metric){
+							manager.updateDBTierMinMetric(metric);
+							if (metric.trend =="T") {
+								var dir = config.images;
+								log.info("capture graph for "+metric.appid+" "+metric.id+" "+dir);
+								var childArgs = [ path.join(__dirname, 'screencapture.js'),dir,config.baseUrl,metric.appid,metric.id];
+								childProcess.execFile(binPath, childArgs,
+										function(err, stdout, stderr) {
+								});
+							}
+						});
 					});
 				}, console.error);
 	});

@@ -56,20 +56,18 @@ ga('send', 'pageview');
 	</div>
 	<div id="errors" class="datagrid" ng-app="" ng-controller="errorController">
 		<p><a href="<%=url%>" target="_blank">Click here to see exceptions in AppDynamics</a></p> 
-		<p>Fetching exceptions that are trending for the last <b>15</b> minutes.</p>
+		<p>Fetching exceptions that are trending for the last <b>20</b> minutes.</p>
 		<table class="pure-table">
 			<thead>
 				<tr>
 			  		<th>Exception</th>
-			  		<th>15 Minute Avg</th>
-			  		<th>15 Minute Max</th>
+			  		<th>20 Minute Avg</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="err in exceptions" ng-class-odd="'alt'">
 				    <td><a href="{{err.url}}" target="_blank">{{err.name}}</a></td>
-				    <td>{{err.minavg }}</td>
-				    <td>{{err.max }}</td>
+				    <td>{{err.avg }}</td>
 				</tr>
 			</tbody>
 		</table>

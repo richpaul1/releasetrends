@@ -2,6 +2,7 @@ var config = require('../config.json');
 var log4js = require('log4js');
 var log = log4js.getLogger("manager");
 var restManager = require('./restmanager');
+var trend = require('./trend');
 var monk = require('monk');
 var Q = require('q');
 require('q-foreach')(Q);
@@ -14,9 +15,6 @@ dbApps.index({'id':1});
 
 var dbTiers = db.get('tiers');
 dbTiers.index({'appid':1,'id':1});
-
-var dbBTs = db.get("businesstransactions");
-dbBTs.index({'appid':1,'id':1});
 
 var dbTierMetric = db.get('tierminmetric');
 dbTierMetric.index({'trend':1,'factor':-1});
@@ -32,6 +30,13 @@ dbErrorCodes.index({'code':1,'date':1});
 var dbErrorSummary = db.get('errorsummary');
 dbErrorSummary.index({'appid':1,'guid':1,'threadid':1});
 dbErrorSummary.index({'code':1});
+
+var dbBTs = db.get("bts");
+var dbBTErrorIDException = db.get("bterroridexceptions");
+var dbBTErrors = db.get('bterrors');
+dbBTErrors.index("btid errorid", { unique: true });
+var dbBTErrorSummary = db.get('bterrorsummary');
+dbBTErrorSummary.index("btid errorid guid", { unique: true });
 
 var exception_min_average_lower_limit = config.exception_min_average_suspects_must_be_greater_than;
 
@@ -235,6 +240,19 @@ exports.getMinuteMetricsValues = function(appid, tierid, callback){
 	return deferred.promise;
 }
 
+exports.getDBTierMetric = function(appid, tierid, callback){
+	var deferred = Q.defer();
+	dbTierMetric.find({"appid": appid,"id":tierid}, function (err, data) {
+		if(err){
+			deferred.reject(err);
+		}else{
+			deferred.resolve(data[0]);
+		}
+	});
+	return deferred.promise;
+}
+
+
 exports.getMinuteMetrics = function(appid, tierid, callback){
 	var deferred = Q.defer();
 	dbTierMetric.find({"appid": appid,"id":tierid}, function (err, metrics) {
@@ -311,10 +329,8 @@ exports.updateWeekMetrics = function(callback){
 						var metric = metrics[0];
 						if (!metric) {
 							dbTierWeekMetric.insert(tierMetric);
-							//log.info("inserting weekmetric:"+exports.toString(tierMetric))
 						} else {
 							dbTierWeekMetric.update({_id: metric._id}, {$set: {"weekmetrics": data}});
-							//log.info("updating weekmetrics :"+exports.toString(tierMetric));
 						}
 					});
 				}
@@ -489,7 +505,7 @@ exports.processException = function(app,tier,exception){
 	return deferred.promise;
 }
 
-exports.buildExceptionStats = function(appid,tierid){
+exports.buildExceptionStats_deprecated = function(appid,tierid){
 	var deferred = Q.defer();
 		exports.fetchApp(appid).then(function (app) {
 			log.info(" app :"+app.id);
@@ -522,9 +538,53 @@ exports.buildExceptionStats = function(appid,tierid){
 	return deferred.promise;
 }
 
+exports.fetchAllExceptionsMinMetric = function (app,tier){
+	var deferred = Q.defer();
+	restManager.fetchAllExceptionsMinMetric(app,tier,function(response){
+		deferred.resolve(response);
+	});
+	return deferred.promise;
+}
+
+exports.buildExceptionStats = function(appid,tierid){
+	var deferred = Q.defer();
+		exports.fetchApp(appid).then(function (app) {
+			console.log(" app :"+app.id);
+			exports.fetchTier(appid,tierid).then(function(tier){
+				console.log(" tier :"+tier.id);
+				exports.getDBTierMetric(appid,tierid).then(function(dbTierMetric){
+					//console.log("dbTierMetric :"+JSON.stringify(dbTierMetric));
+					exports.fetchAllExceptionsMinMetric(app,tier).then(function(response){
+						var exceptions = JSON.parse(response);
+						//console.log("exceptions :"+JSON.stringify(exceptions));
+						var data = [];
+						exceptions.forEach(function(exception){
+							var avg  = exception.metricValues[0].value;
+							if(avg > 0){
+								var id = getErrorIdFromMetricName(exception.metricName);
+								var name = getExceptionNameFromMetric(exception.metricPath);
+								var execRec = {"appid":app.id,"tierid":tier.id,"errorid":id,"name":name,"url":getExceptionUrl(app,id),"avg":avg};
+								//console.log("execRec :"+JSON.stringify(execRec));
+								data.push(execRec);
+							}
+						});
+						data.sort(function(a,b) { return parseInt(b.avg) - parseInt(a.avg) } );
+						deferred.resolve(data);
+					});
+				})
+			});
+		});
+	return deferred.promise;
+}
+
+
 getErrorIdFromMetricName = function(name){
 	//format of name : "metricName":"BTM|Application Diagnostic Data|Error:209813|Errors per Minute"
-	return name.split(":")[1].split("|")[0];
+	var splits = name.split(":");
+	if(splits[1]){
+		return splits[1].split("|")[0];
+	}
+	return splits[1];
 }
 
 getExceptionUrl = function(app,exceptionId){
@@ -532,4 +592,174 @@ getExceptionUrl = function(app,exceptionId){
 	return app.controller_url+"/controller/#/location=APP_ERROR_DASHBOARD&timeRange=last_15_minutes.BEFORE_NOW.-1.-1.15&application="+app.id+"&error="+exceptionId;
 }
 
+//Availability Metrics
+exports.buildBTMetrics = function(){
+	var apps = config.availability_apps;
+	apps.forEach(function(app){
+		processBT(app);
+	});
+}
 
+exports.fetchBTMinuteAverageResponseTimes = function (app){
+	var deferred = Q.defer();
+	restManager.fetchBTMinuteAverageResponseTimes(app,function(response){
+		deferred.resolve(response);
+	});
+	return deferred.promise;
+}
+
+exports.fetchBTWeeklyAverageResponseTimes = function (app){
+	var deferred = Q.defer();
+	restManager.fetchBTMinuteAverageResponseTimes(app,function(response){
+		deferred.resolve(response);
+	});
+	return deferred.promise;
+}
+
+exports.fetchBTMinuteAverageErrors = function (app){
+	var deferred = Q.defer();
+	restManager.fetchBTMinuteAverageErrors(app,function(response){
+		deferred.resolve(response);
+	});
+	return deferred.promise;
+}
+
+exports.fetchBTWeeklyAverageErrors = function (app){
+	var deferred = Q.defer();
+	restManager.fetchBTWeeklyAverageErrors(app,function(response){
+		deferred.resolve(response);
+	});
+	return deferred.promise;
+}
+
+processBT = function(app){
+	exports.fetchBTMinuteAverageResponseTimes(app).then(function(minAvgResponse){
+		exports.fetchBTWeeklyAverageResponseTimes(app).then(function(weekAvgResponse){
+			exports.fetchBTMinuteAverageErrors(app).then(function(minErrorsPerMin){
+				exports.fetchBTWeeklyAverageErrors(app).then(function(weekErrorsPerMin){
+					var btmetrics = {"appid":app.id,"tier":app.tier,"bt":app.bt,"btid":app.btid,"minavgresponse":minAvgResponse,"weekavgresponse":weekAvgResponse,"minerrorspermin":minErrorsPerMin,"weekerrorspermin":weekErrorsPerMin};
+					
+					dbBTs.find({"appid":app.id,"btid":app.bt}, function(err, results){
+						var btRec = results[0];
+						if(!btRec){
+							dbBTs.insert(btRecord);
+						}else{
+							dbBTs.update({ _id: btRec._id }, { $set: { "minavgresponse":minAvgResponse,"weekavgresponse":weekAvgResponse,"minerrorspermin":minErrorsPerMin,"weekerrorspermin":weekErrorsPerMin} });
+						}
+					});
+				});
+			});
+		});
+	});
+}
+
+exports.processBTSnapshots = function(){
+	var apps = config.bt_apps;
+	apps.forEach(function(app){
+		processBT(app);
+		processBTErrorSnapshots(app);
+		weeklyAverageErrorIDExceptions(app);
+		minuteAverageErrorIDExceptions(app);
+	});
+}
+
+exports.cleanUpBTSnapshots = function(){
+	//todo	
+}
+
+processBTErrorSnapshots = function(app){
+	restManager.fetchBTErrorCodeSnapshots(app,function(response){
+		var errors = JSON.parse(response);
+		var count = 0;
+		errors.forEach(function(record){
+			
+			console.log("");
+			console.log(JSON.stringify(record));
+			console.log("");
+
+			record.errorIDs.forEach(function(errorid){
+				var errorRecord = {"time":record.serverStartTime,"errorid":errorid,"btid":app.btid,"bt":app.bt,"appid":app.id,"app":app.app};
+				
+				dbBTErrors.find({"btid":app.btid,"errorid":errorid}, function(err, docs){
+					var doc = docs[0];
+					if(!doc){
+						dbBTErrors.insert(errorRecord);
+					}else{
+						dbBTErrors.update({_id:doc._id},{$set:{"time":record.serverStartTime}});
+					}
+				});
+				
+				var errorRecordSummary = {"time":record.serverStartTime,"errorid":errorid,"summary":record.summary,"btid":app.btid,"bt":app.bt,"appid":app.id,"app":app.app,"guid":record.requestGUID,"url":record.URL,"node":record.applicationComponentNodeId,"properties":record.transactionProperties};
+				dbBTErrorSummary.insert(errorRecordSummary);
+			})
+		});
+	});
+}
+
+weeklyAverageErrorIDExceptions = function(app){
+	restManager.fetchErrorsAndExceptionsWeeklyAverage(app,function(response){
+		var metrics = JSON.parse(response);
+		metrics.forEach(function(metric){
+			var errorID = getErrorIdFromMetricName(metric.metricName);
+			var exceptionName = getExceptionNameFromMetric(metric.metricPath)
+			var average = 0;
+			if(metric.metricValues[0]){
+				average = metric.metricValues[0].value;
+			}
+			if(errorID && exceptionName){
+				dbBTErrors.find({"btid":app.btid,"errorid":parseInt(errorID)}, function(err, docs){
+					var doc = docs[0];
+					if(doc){
+						dbBTErrors.update({ _id: doc._id }, { $set: { "weeklyaverage":average, "exception":exceptionName,"metrics":"W"} });
+					}
+				});
+			}
+		});
+	})
+}
+
+function metricWrapper (record) {
+    this.record = record;
+    
+    metricWrapper.prototype.getMinuteMetrics = function(){
+    	return this.record.minmetrics;
+    }
+    
+    metricWrapper.prototype.getWeeklyAverage = function(){
+    	return this.record.weeklyaverage;
+    }
+    
+    metricWrapper.prototype.getMetricRecord = function(){
+    	return this.record;
+    }
+}
+
+minuteAverageErrorIDExceptions = function(app){
+	restManager.fetchErrorsAndExceptionsMinuteAverage(app,function(response){
+		var metrics = JSON.parse(response);
+		metrics.forEach(function(metric){
+			var errorID = getErrorIdFromMetricName(metric.metricName);
+			if(errorID){
+				dbBTErrors.find({"btid":app.btid,"errorid":parseInt(errorID),"metrics":"W"}, function(err, docs){
+					var doc = docs[0];
+					if(doc){
+						doc.minmetrics = metric.metricValues;
+						doc.metrics = "M";
+						doc.metricpath = metric.metricPath;
+						trend.calculateTrend(new metricWrapper(doc),function(docmetric){
+							restManager.fetchExceptionWeekMetricNoRollUp(app,app.tier,docmetric.metricpath,function(response){
+								var weeklymetrics = JSON.parse(response);
+								docmetric.weekmetrics = weeklymetrics[0].metricValues;	
+								dbBTErrors.update({_id: docmetric._id},{$set : docmetric});
+							});
+						});
+					}
+				});
+			}
+		});z
+	})
+}
+
+getExceptionNameFromMetric = function(path){
+	return path.split("|")[2];
+}
