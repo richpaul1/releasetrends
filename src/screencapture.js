@@ -8,6 +8,8 @@ var tierid 	= system.args[4];
 
 fs.changeWorkingDirectory(dir);
 
+console.log("system args :"+system);
+
 var page = require('webpage').create();
 page.settings.userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"	
 page.open(url+"/chart.html?appid="+appid+"&tierid="+tierid, function() {
