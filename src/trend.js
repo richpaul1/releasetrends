@@ -3,7 +3,7 @@ var log = log4js.getLogger("trend");
 var config = require('../config.json');
 
 var calclog = function(message) {
-	log.debug(message);
+	//log.debug(message);
 }
 
 var average = function(values) {

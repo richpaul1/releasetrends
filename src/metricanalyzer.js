@@ -79,6 +79,7 @@ var exec = function(){
 							if (metric.trend =="T") {
 								var dir = config.images;
 								log.info("capture graph for "+metric.appid+" "+metric.id+" "+dir);
+								log.info("metric record :"+JSON.stringify(metric));
 								var childArgs = [ path.join(__dirname, 'screencapture.js'),dir,config.baseUrl,metric.appid,metric.id];
 								childProcess.execFile(binPath, childArgs,
 										function(err, stdout, stderr) {
