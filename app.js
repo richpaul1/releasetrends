@@ -85,6 +85,10 @@ app.use('/errorsummaryjson',errorsummaries);
 app.use('/exceptionstatsjson',exceptionstatsjson);
 app.use('/exceptionlogicjson',exceptionlogicjson);
 
+app.get('/dashhelp.html', function(req, res) {
+	res.render('dashhelp');
+});
+
 app.get('/chart.html', function(req, res) {
 	var appid = parseInt(req.query.appid);
 	var tierid = parseInt(req.query.tierid);

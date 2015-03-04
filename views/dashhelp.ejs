@@ -1,0 +1,55 @@
+<html>
+<head>
+   <link rel="stylesheet" type="text/css" href="help/style.css" />
+</head>
+<body>
+<p>The Exception Dashboard shows only Exceptions that are trending.</p>
+<p>We use a statistical regression model to determine if the exceptions per minute metric is trending. The page auto refreshes after it has cycled through
+all the tiers. We project out 15 minutes into the future to create a trending factor which is the next 15 minute average value divided by the last 2 weeks average value.
+Based on this trending factor we highlight the bubbles. If you click through on the bubbles, we will show you the exceptions that are causing the trends</p>
+<p>We will now describe the graphs and the elements in the legend section. Describe some of our concepts and followed by the features</p>
+<p>Legend</p>
+<img src="/help/screen1.png"/>
+<ul>
+<li>PRODUCTION - 3 TRAVELPORT-UAPI = This is the Environment name - Trending Factor + Tiername</li>
+<li>Y Axis = shows the value of the metrics. This metric is the number of exceptions per minute in that tier.</li>
+<li>Blue Graph = Exception Per Minute</li>
+<li>Green Graph = The Last 2 week average</li>
+<li>Red Line = This is the statistical linear regression model based on the metric values per minute for the last 20 minutes.</li>
+<li>2 Week Avg :54 = This is the 2 week average value.</li>
+<li>Last 20 Mins : 141 @ 9:24 pm = This is the exceptions per minute average for the last 20 minutes. 141 is the average value. @ 9:24 pm is the last minute value recorded</li> 
+<li>Next 15 Mins : 196 = Using the linear regression model, we project that in the next 15 minutes e.g. @ 9:39 pm the exceptions per minute average will be 196.</li>
+</ul>
+<img src="/help/screen2.png"/>
+<ul>
+<li>2 Week Avg :54 = This is the last 2 week avarage for the exceptions per minute metric</li>
+<li>Last 2 Week = This is the Blue Graph</li>
+</ul>
+<img src="/help/screen3.png"/>
+<ul>
+<li>If there are multiple tiers that have trending exceptions. Then the outer bubble represents the environment.</li>
+<li>The inner bubble shows the Trending Factor and the Tier name.</li>
+</ul>
+
+<p>Concepts</p>
+<p>Trending Factor</p>
+<p>The Trending Factor is calculated by dividing the next 15 minute average value by the 2 week average value. e.g. if in the next 15 minutes
+the average value is projected to be 100 and the last 2 week avarage value is 10 then the Trending Factor is 10.</p>
+<p>The bubbles are colored coded based on :
+<ul>
+<li>Trending Factor < 10 : Grey</li>
+<li>Trending Factor > 10 and < 50: Yellow</li>
+<li>Trending Factor > 50 : Red</li>
+</ul>
+</p>
+<p>Features</p>
+<p>Graph Rotation</p>
+<p>The Graphs will be rotated through based on Trending Factor descending order</p>
+<p>Highlight Bubble</p>
+<img src="/help/screen4.png"/>
+<p>If you mouse over a bubble then the graph will be displayed on the right</p>
+<p>Click on Bubble</p>
+<p>If you click on a bubble you will be taken to the Tier dashboard. This will show you which exceptions are trending</p>
+<img src="/help/screen5.png"/>
+</body>
+</html>
