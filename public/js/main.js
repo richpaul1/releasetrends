@@ -21,8 +21,6 @@ define(function(require, exports, module) {
   var view;
   var eventHandler = new EventHandler();
   
-  console.log("profile :"+profile);
-  
   var url = '/trendingjson';
   if(profile){
 	  url = url+"?profile="+profile;
