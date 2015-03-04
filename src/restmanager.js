@@ -10,6 +10,7 @@ var debug = require('debug')('monk:*');
 var weekDuration = parseInt(config.trending_use_number_of_weeks) * (7*24*60);
 var minDuration = parseInt(config.trending_use_number_of_mins);
 var btMinDuration = config.bt_use_last_mins;
+var errorCodeSnapshotsDuration = config.error_code_fetch_snapshots;
 
 var fetch = function(controller,url, parentCallBack){
 	var str = "";
@@ -82,7 +83,7 @@ exports.getTierWeekMetricRollup = function (tier,callback){
 }
 
 exports.fetchErrorCodeSnapshots = function (controller,appid,callback){
-	var url = "/controller/rest/applications/"+appid+"/request-snapshots?time-range-type=BEFORE_NOW&duration-in-mins=10&data-collector-name=ErrorId&output=JSON&user-experience=ERROR&need-props=true";
+	var url = "/controller/rest/applications/"+appid+"/request-snapshots?time-range-type=BEFORE_NOW&duration-in-mins="+errorCodeSnapshotsDuration+"&data-collector-name=ErrorId&output=JSON&user-experience=ERROR&need-props=true";
 	fetch(controller,url,callback);
 }
 

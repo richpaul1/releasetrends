@@ -45,7 +45,6 @@ var init = function(){
 //	btmetricscheduler = childProcess.fork("./src/btmetricscheduler");
 //	btmetricscheduler.send({"name":"btmetricscheduler"})
 	
-	
 }()
 
 app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));

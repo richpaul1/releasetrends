@@ -13,7 +13,7 @@ process.on('message', function(msg) {
 
 var exec = function(){
 	var rule = new schedule.RecurrenceRule();
-	var minSchedule = parseInt(config.fetch_data_every_number_of_mins);;
+	var minSchedule = config.error_code_fetch_snapshots;
 	rule.minute = new schedule.Range(0, 59, minSchedule);
 
 	var j = schedule.scheduleJob(rule, function() {

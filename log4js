@@ -3,6 +3,7 @@
     {
       "type": "clustered",
       "appenders": [
+      { "type": "console" },
         {
           "type": "dateFile",
           "filename": "log/access.log",

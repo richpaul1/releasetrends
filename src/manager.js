@@ -74,8 +74,11 @@ exports.initApplications = function(){
 }
 
 exports.fetchApps = function(callback){
+	log.info("fetchApps");
 	var search = dbApps.find();
+	log.info("search results :"+search);
 	search.each(function (doc) {
+		log.info("App :"+JSON.stringify(doc));
 		callback(doc);
 	});
 }
@@ -139,7 +142,6 @@ exports.initBusinessTransactions = function(){
 	exports.fetchApps(function(app){
 		restManager.fetchBusinessTransactions(app,function(response){
 			bts = JSON.parse(response);
-			log.info("inserted number bts for :"+app.name+" : "+bts.length);
 			bts.forEach(function(bt)  {
 				var btRecord = { "appid":app.id,"id":bt.id, "name": bt.name} ;
 				dbBTs.find({"appid":app.id,"id":bt.id}, function(err, results){
@@ -157,7 +159,7 @@ exports.initBusinessTransactions = function(){
 
 exports.fetchBusinessTransaction = function(appid,id){
 	var deferred = Q.defer();
-	dbBTs.find({"appid":appid,"id":id}, function (err, bts) {
+	dbBTs.find({"appid":parseInt(appid),"id":parseInt(id)}, function (err, bts) {
 		if(err){
 			deferred.reject(err);
 		}else{
@@ -277,16 +279,16 @@ exports.getWeeklyMetrics = function(appid, tierid, callback){
 	return deferred.promise;
 }
 
-
 exports.updateMinMetrics = function(callback){
 	log.info("fetching minute metrics");
 	exports.fetchTiers(function(tier){
 		//get metrics for last configured mins
 		restManager.getTierMinMetric(tier,function(response){
 			if(response) {
+				//log.info(" response :"+JSON.stringify(response));
 				var data = JSON.parse(response);
-				
 				if(data && data[0] && data[0].metricValues && data[0].metricValues.length > 0 ){
+					//log.info("app :"+tier.appid+" tier :"+tier.id);
 					var tierMetric = {"appid": tier.appid, "id": tier.id, "minmetrics": data, "appname":tier.appname,"tiername":tier.name,"controller_url":tier.controller_url};
 					dbTierMetric.find({"appid": tier.appid, "id": tier.id}, function (err, metrics) {
 						var metric = metrics[0];
@@ -306,10 +308,10 @@ exports.updateMinMetrics = function(callback){
 							});
 						}
 					});
+				}else{
+					dbTierMetric.remove({"appid": tier.appid, "id": tier.id});
 				}
-			}else{
-				dbTierMetric.remove({"appid": tier.appid, "id": tier.id});
-			}
+			}		
 		});
 	});
 }
@@ -345,8 +347,11 @@ exports.fetchErrorCodeSnapshots = function(callback){
 	apps.forEach(function(app){
 		restManager.fetchErrorCodeSnapshots(config.controller,app.id,function(response){
 			var data = JSON.parse(response);
+			log.info("Error Snapshots Found :"+data.length);
+			var codescount =0;
+			var summarycount =0;
 			data.forEach(function(record){
-				
+				//log.info("ErrorSnapShot :"+JSON.stringify(record));
 				if(record.businessData && record.businessData.length >0){
 					var codeString = getCodeString(record.businessData);
 					if(codeString) {
@@ -510,7 +515,7 @@ exports.buildExceptionStats_deprecated = function(appid,tierid){
 		exports.fetchApp(appid).then(function (app) {
 			log.info(" app :"+app.id);
 			exports.fetchTier(appid,tierid).then(function(tier){
-				log.info(" tier :"+tier.id);
+				//log.info(" tier :"+tier.id);
 				exports.fetchExceptions(app,tier).then(function(response){
 					var exceptions = JSON.parse(response)
 					//log.info(" exceptions :"+JSON.stringify(exceptions));
@@ -559,14 +564,20 @@ exports.buildExceptionStats = function(appid,tierid){
 						//console.log("exceptions :"+JSON.stringify(exceptions));
 						var data = [];
 						exceptions.forEach(function(exception){
-							var avg  = exception.metricValues[0].value;
-							if(avg > 0){
-								var id = getErrorIdFromMetricName(exception.metricName);
-								var name = getExceptionNameFromMetric(exception.metricPath);
-								var execRec = {"appid":app.id,"tierid":tier.id,"errorid":id,"name":name,"url":getExceptionUrl(app,id),"avg":avg};
-								//console.log("execRec :"+JSON.stringify(execRec));
-								data.push(execRec);
+							console.log("...");
+							console.log("exception :"+JSON.stringify(exception));
+							if(exception.metricValues.length > 0){
+								var avg  = exception.metricValues[0].value;
+								console.log("average :"+avg);
+								if(avg > 0){
+									var id = getErrorIdFromMetricName(exception.metricName);
+									var name = getExceptionNameFromMetric(exception.metricPath);
+									var execRec = {"appid":app.id,"tierid":tier.id,"errorid":id,"name":name,"url":getExceptionUrl(app,id),"avg":avg};
+									console.log("execRec :"+JSON.stringify(execRec));
+									data.push(execRec);
+								}
 							}
+							console.log("... ...");
 						});
 						data.sort(function(a,b) { return parseInt(b.avg) - parseInt(a.avg) } );
 						deferred.resolve(data);
@@ -638,7 +649,6 @@ processBT = function(app){
 			exports.fetchBTMinuteAverageErrors(app).then(function(minErrorsPerMin){
 				exports.fetchBTWeeklyAverageErrors(app).then(function(weekErrorsPerMin){
 					var btmetrics = {"appid":app.id,"tier":app.tier,"bt":app.bt,"btid":app.btid,"minavgresponse":minAvgResponse,"weekavgresponse":weekAvgResponse,"minerrorspermin":minErrorsPerMin,"weekerrorspermin":weekErrorsPerMin};
-					
 					dbBTs.find({"appid":app.id,"btid":app.bt}, function(err, results){
 						var btRec = results[0];
 						if(!btRec){
