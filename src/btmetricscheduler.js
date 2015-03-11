@@ -6,7 +6,7 @@ var log4js = require('log4js');
 var log = log4js.getLogger("btmetrics");
 
 var calclog = function(message) {
-	console.log(message);
+	log.info(message);
 };
 
 var close = function(){

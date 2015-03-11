@@ -74,11 +74,8 @@ exports.initApplications = function(){
 }
 
 exports.fetchApps = function(callback){
-	log.info("fetchApps");
 	var search = dbApps.find();
-	log.info("search results :"+search);
 	search.each(function (doc) {
-		log.info("App :"+JSON.stringify(doc));
 		callback(doc);
 	});
 }
@@ -122,12 +119,12 @@ exports.initTiers = function(){
 	exports.fetchApps(function(app){
 		restManager.getTiersJson(app,function(response){
 			jtiers = JSON.parse(response);
-			log.info("inserted number tiers for :"+app.name+" : "+jtiers.length);
 			jtiers.forEach(function(tier)  {
 				var tierRecord = { "appid":app.id,"id":tier.id, "name": tier.name, "appname":app.name,"controller":app.controller,"controller_url":app.controller_url} ;
 				dbTiers.find({"appid":app.id,"id":tier.id}, function(err, tiers){
 					var tier = tiers[0];
 					if(!tier){
+						log.info("inserted tier :"+app.name+" : "+JSON.stringify(tierRecord));
 						dbTiers.insert(tierRecord);
 					}else{
 						dbTiers.update({ _id: tier._id }, { $set: { "name": tier.name,"appname":app.name} });
@@ -217,8 +214,6 @@ exports.getTrendingMetrics = function(profile){
 		});
 		query = { trend:"T",appid:{ $in:appIDs} }; 
 	}
-	
-	log.info("query :"+JSON.stringify(query));
 	
 	dbTierMetric.find(query, function (err, metrics) {
 		if(err){
@@ -554,30 +549,30 @@ exports.fetchAllExceptionsMinMetric = function (app,tier){
 exports.buildExceptionStats = function(appid,tierid){
 	var deferred = Q.defer();
 		exports.fetchApp(appid).then(function (app) {
-			console.log(" app :"+app.id);
+			log.info(" app :"+app.id);
 			exports.fetchTier(appid,tierid).then(function(tier){
-				console.log(" tier :"+tier.id);
+				log.info(" tier :"+tier.id);
 				exports.getDBTierMetric(appid,tierid).then(function(dbTierMetric){
-					//console.log("dbTierMetric :"+JSON.stringify(dbTierMetric));
+					//log.info("dbTierMetric :"+JSON.stringify(dbTierMetric));
 					exports.fetchAllExceptionsMinMetric(app,tier).then(function(response){
 						var exceptions = JSON.parse(response);
-						//console.log("exceptions :"+JSON.stringify(exceptions));
+						//log.info("exceptions :"+JSON.stringify(exceptions));
 						var data = [];
 						exceptions.forEach(function(exception){
-							console.log("...");
-							console.log("exception :"+JSON.stringify(exception));
+							log.info("...");
+							log.info("exception :"+JSON.stringify(exception));
 							if(exception.metricValues.length > 0){
 								var avg  = exception.metricValues[0].value;
-								console.log("average :"+avg);
+								log.info("average :"+avg);
 								if(avg > 0){
 									var id = getErrorIdFromMetricName(exception.metricName);
 									var name = getExceptionNameFromMetric(exception.metricPath);
 									var execRec = {"appid":app.id,"tierid":tier.id,"errorid":id,"name":name,"url":getExceptionUrl(app,id),"avg":avg};
-									console.log("execRec :"+JSON.stringify(execRec));
+									log.info("execRec :"+JSON.stringify(execRec));
 									data.push(execRec);
 								}
 							}
-							console.log("... ...");
+							log.info("... ...");
 						});
 						data.sort(function(a,b) { return parseInt(b.avg) - parseInt(a.avg) } );
 						deferred.resolve(data);
@@ -682,10 +677,6 @@ processBTErrorSnapshots = function(app){
 		var errors = JSON.parse(response);
 		var count = 0;
 		errors.forEach(function(record){
-			
-			console.log("");
-			console.log(JSON.stringify(record));
-			console.log("");
 
 			record.errorIDs.forEach(function(errorid){
 				var errorRecord = {"time":record.serverStartTime,"errorid":errorid,"btid":app.btid,"bt":app.bt,"appid":app.id,"app":app.app};

@@ -47,7 +47,7 @@ var init = function(){
 	
 }()
 
-app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
+//app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,7 +55,6 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -129,9 +128,7 @@ app.get('/tierdetails.html',function(req,res){
 	var appid = req.query.appid;
 	var tierid=req.query.tierid;
 	req.manager.fetchApp(appid).then(function(app){
-		
 		var url = app.controller_url+"/controller/#/location=APP_COMPONENT_MANAGER&timeRange=last_15_minutes&application="+appid+"&component="+tierid;
-		console.log("URL : "+url);
 		res.render('tierdetails',{"url":url,"appid":appid,"tierid":tierid,"week":config.trending_use_number_of_weeks,"lastminutes":config.trending_use_number_of_mins});
 	},log.error);
 });

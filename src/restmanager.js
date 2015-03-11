@@ -5,7 +5,6 @@ var https = require("https");
 var http = require("http");
 http.globalAgent.maxSockets = 20;
 var config = require('../config.json');
-var debug = require('debug')('monk:*');
 
 var weekDuration = parseInt(config.trending_use_number_of_weeks) * (7*24*60);
 var minDuration = parseInt(config.trending_use_number_of_mins);
