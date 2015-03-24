@@ -248,7 +248,7 @@ define(function(require, exports, module) {
     		return;
     	}
 		var newX, newY;
-		tooltipSurface.setProperties({display: 'inline',position:'relative',zIndex:'5'});
+		tooltipSurface.setProperties({display: 'inline',zIndex:'5'});
 		tooltipSurface.setContent("/public/images/"+data.graph+".png");
 		
 		newX = newXLoc;
