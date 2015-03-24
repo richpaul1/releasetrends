@@ -104,6 +104,14 @@ app.get('/dashboard.html',function(req,res){
 	res.render('exceptiondashboard',{"profile":profile});
 });
 
+app.get('/bubbleDashboard.html',function(req,res){
+	var profile = req.query.profile;
+	if(!profile){
+		profile = "";
+	}
+	res.render('exceptionbubbles',{"profile":profile});
+});
+
 app.get('/errorcodes.html',function(req,res){
 	var date = req.query.date;
 	if(!date){
