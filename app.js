@@ -40,8 +40,8 @@ var init = function(){
 	errorcodeanalyzer = childProcess.fork("./src/errorcodeanalyzer");
 	errorcodeanalyzer.send({"name":"errorcodeanalyzer"});
 	
-//	cleanup = childProcess.fork("./src/cleanup");
-//	cleanup.send({"name":"cleanup"});
+	cleanup = childProcess.fork("./src/cleanup");
+	cleanup.send({"name":"cleanup"});
 //	btmetricscheduler = childProcess.fork("./src/btmetricscheduler");
 //	btmetricscheduler.send({"name":"btmetricscheduler"})
 	
