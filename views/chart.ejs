@@ -27,6 +27,7 @@
 	position: relative;
 	display: inline-block;
 	font-family: Arial, Helvetica, sans-serif;
+	background :white;
 }
 #chart {
 	display: inline-block;
@@ -37,6 +38,7 @@
 	top: 0;
 	bottom: 0;
 	width: 40px;
+	color: black;
 }
 #legend {
 	display: block;
@@ -48,6 +50,7 @@
 	position: relative;
 	display: inline-block;
 	font-family: Arial, Helvetica, sans-serif;
+	background :white;
 }
 #chart2 {
 	display: inline-block;
@@ -58,6 +61,7 @@
 	top: 0;
 	bottom: 0;
 	width: 40px;
+	color: black;
 }
 #legend2 {
 	display: block;
@@ -74,6 +78,14 @@
 .rickshaw_legend{
 padding: 2px;
 margin-left: 22px;
+}
+
+.rickshaw_graph .x_tick .title{
+	opacity:1;
+} 
+
+.rickshaw_graph .y_ticks text, .rickshaw_graph .x_ticks_d3 text{
+	opacity:1;
 }
 
 
@@ -125,7 +137,7 @@ d3.json(url, function (metrics, err) {
 	var b0 = metrics.b0;
 	var maxTime=0;
 	metrics.minmetrics[0].metricValues.forEach(function (app) {
-		console.log("metric : "+ JSON.stringify(app));
+		//console.log("metric : "+ JSON.stringify(app));
 		var startTime = app.startTimeInMillis*1;
 		if(startTime > maxTime)
 			maxTime = startTime;
@@ -170,7 +182,7 @@ d3.json(url, function (metrics, err) {
 	var weekurl = '/weeklymetricjson/<%= appid %>/<%= tierid %>';
 	d3.json(weekurl, function (metrics, err) {
 	
-		//console.log("metrics :"+JSON.stringify(metrics));
+		console.log("metrics :"+JSON.stringify(metrics));
 		var data = [];
 		var avg  = [];
 		var seriesData = [];
@@ -180,6 +192,7 @@ d3.json(url, function (metrics, err) {
 	    	var x = app.startTimeInMillis/1000;
 	    	//var date = new Date(app.startTimeInMillis);
 	    	//console.log("date : "+date.toString());
+	    	console.log("y ="+app.value);
 			data.push({"x":x,"y":app.value});
 			avg.push({"x":x,"y":weekAverage});	
 		});
@@ -201,7 +214,8 @@ d3.json(url, function (metrics, err) {
 			graph: graph,
 			orientation: 'left',
 			tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-			element: document.getElementById('y_axis'),
+			tickSize: 1,
+			element: document.getElementById('y_axis2'),
 		} );	
 		
 		var legend = new Rickshaw.Graph.Legend( {

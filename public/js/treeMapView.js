@@ -72,7 +72,7 @@ define(function(require, exports, module) {
     var background = new Surface({
       size: viewSize,
       properties: {
-        backgroundColor: '#fff',
+        backgroundColor: 'black',
       }
     });
 
@@ -83,7 +83,7 @@ define(function(require, exports, module) {
       properties: {
         fontSize: '12px',
         textAlign: 'left',
-        color: 'black',
+        color: 'grey',
         padding:'5px'
       }
     });
