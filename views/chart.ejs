@@ -182,7 +182,7 @@ d3.json(url, function (metrics, err) {
 	var weekurl = '/weeklymetricjson/<%= appid %>/<%= tierid %>';
 	d3.json(weekurl, function (metrics, err) {
 	
-		console.log("metrics :"+JSON.stringify(metrics));
+		//console.log("metrics :"+JSON.stringify(metrics));
 		var data = [];
 		var avg  = [];
 		var seriesData = [];
@@ -192,7 +192,7 @@ d3.json(url, function (metrics, err) {
 	    	var x = app.startTimeInMillis/1000;
 	    	//var date = new Date(app.startTimeInMillis);
 	    	//console.log("date : "+date.toString());
-	    	console.log("y ="+app.value);
+	    	//console.log("y ="+app.value);
 			data.push({"x":x,"y":app.value});
 			avg.push({"x":x,"y":weekAverage});	
 		});
