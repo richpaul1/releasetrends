@@ -63,6 +63,8 @@ exports.getTiersJson = function(app,callback) {
 
 exports.getTierMinMetric = function (tier,callback){
 	var url = "/controller/rest/applications/"+tier.appid+"/metric-data?metric-path=Overall%20Application%20Performance%7C"+tier.name+"%7CExceptions%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins="+minDuration+"&output=JSON&rollup=false";
+	log.debug("url :"+url);
+	//log.debug("response :"+str);
 	fetch(tier.controller,url,callback);
 }
 

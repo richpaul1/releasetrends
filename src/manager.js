@@ -280,7 +280,7 @@ exports.updateMinMetrics = function(callback){
 		//get metrics for last configured mins
 		restManager.getTierMinMetric(tier,function(response){
 			if(response) {
-				//log.info(" response :"+JSON.stringify(response));
+				log.info(" response :"+JSON.stringify(response));
 				var data = JSON.parse(response);
 				if(data && data[0] && data[0].metricValues && data[0].metricValues.length > 0 ){
 					//log.info("app :"+tier.appid+" tier :"+tier.id);

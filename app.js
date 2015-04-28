@@ -34,16 +34,18 @@ var btmetricscheduler;
 var init = function(){
 	manager.initApplications();
 	manager.initTiers();
-	manager.initBusinessTransactions();
+	//manager.initBusinessTransactions();
+	
 	metricanalyzer = childProcess.fork("./src/metricanalyzer");
 	metricanalyzer.send({"name":"metricanalyzer"});
-	errorcodeanalyzer = childProcess.fork("./src/errorcodeanalyzer");
-	errorcodeanalyzer.send({"name":"errorcodeanalyzer"});
+	
+	//errorcodeanalyzer = childProcess.fork("./src/errorcodeanalyzer");
+	//errorcodeanalyzer.send({"name":"errorcodeanalyzer"});
 	
 	cleanup = childProcess.fork("./src/cleanup");
 	cleanup.send({"name":"cleanup"});
-//	btmetricscheduler = childProcess.fork("./src/btmetricscheduler");
-//	btmetricscheduler.send({"name":"btmetricscheduler"})
+	//btmetricscheduler = childProcess.fork("./src/btmetricscheduler");
+	//btmetricscheduler.send({"name":"btmetricscheduler"})
 	
 }()
 
@@ -86,6 +88,10 @@ app.use('/exceptionlogicjson',exceptionlogicjson);
 
 app.get('/dashhelp.html', function(req, res) {
 	res.render('dashhelp');
+});
+
+app.get('/sop.html', function(req, res) {
+	res.render('sop');
 });
 
 app.get('/chart.html', function(req, res) {

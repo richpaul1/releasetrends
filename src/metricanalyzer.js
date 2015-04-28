@@ -68,7 +68,7 @@ var exec = function(){
 		manager.updateWeekMetrics();
 		manager.fetchDbTierMetrics().then(
 				function(data) {
-					log.info(new Date().toUTCString()
+					log.info(new Date()
 							+ " : metric analyzer firing ...[" + data.length
 							+ "]");
 					data.forEach(function(metric) {
