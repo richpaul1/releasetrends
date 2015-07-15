@@ -32,18 +32,18 @@ var btmetricscheduler;
 
 
 var init = function(){
-	manager.initApplications();
-	manager.initTiers();
+	//manager.initApplications();
+	//manager.initTiers();
 	//manager.initBusinessTransactions();
 	
-	metricanalyzer = childProcess.fork("./src/metricanalyzer");
-	metricanalyzer.send({"name":"metricanalyzer"});
+	//metricanalyzer = childProcess.fork("./src/metricanalyzer");
+	//metricanalyzer.send({"name":"metricanalyzer"});
 	
 	//errorcodeanalyzer = childProcess.fork("./src/errorcodeanalyzer");
 	//errorcodeanalyzer.send({"name":"errorcodeanalyzer"});
 	
-	cleanup = childProcess.fork("./src/cleanup");
-	cleanup.send({"name":"cleanup"});
+	//cleanup = childProcess.fork("./src/cleanup");
+	//cleanup.send({"name":"cleanup"});
 	//btmetricscheduler = childProcess.fork("./src/btmetricscheduler");
 	//btmetricscheduler.send({"name":"btmetricscheduler"})
 	

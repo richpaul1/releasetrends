@@ -22,20 +22,10 @@
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Trending Exceptions</a>
-        </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">SOC - SOP</a></li>
-            <li><a href="#appdev">App Teams - SOP</a></li>
-            <li><a href="#contact">Contact</a></li>
+          	<li><a href="/dashhelp.html">Trending Exceptions</a></li>
+            <li class="active"><a href="#">SOP</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -43,12 +33,12 @@
 
     <div class="container">
       <div>
-        <h1>SOP : For Identifying Exceptions</h1>
-        <p>This document describes the procedures to take when you would like to notify the development teams of trending exceptions.</p>
-        <p>You have identified a Tier that has trending exceptions, by visually identifying the exception trend When you hover over a circle to verify if the exceptions are trending. You can compare the Trending Factor or visually tell from the 20 min vs 2 week Exception Per Minute graphs.</p>
+        <h1>Standard Operating Procedure : Identifying Exceptions</h1>
+        <p>These steps describes the procedure to take when you have identified a problem and would like to send the data to other teams.</p>
+        <p>By hovering over the bubbles, we have identified an application tier that has trending exceptions. The Exceptions Per Minute metric is trending up and is higher than the two week average.</p>
         <img src="/sop/screen1.png"/>
         <p/>
-        <p>Click on the highlighted tier to drill down to the Exception Details</p>
+        <p>Click on the highlighted tier to drill down to the exception details. This screen lists the exceptions that have a average value greater than 1 exception per minute, for the last 20 minutes.</p>
         <img src="/sop/screen2.png"/>
         <p/>
         <p>Click on the exception you are interested in and you will be taken to AppDynamics Exception Dashboard for this exception. This may take some time to load depending on the number of stacktraces etc.</p>
@@ -63,13 +53,13 @@
         </p>
         <img src="/sop/screen5.png"/>
         <p/>
-        <p>For example the following email will be sent to the team working with the bookability application.</p>
+        <p>For example the following email will be sent to the team :</p>
         <pre>
         Hi Team,
         
         We have found the following exception started to trend :
         
-        java.sql.SQLException.
+      java.sql.SQLException.
       at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:445)
       at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:396)
       at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:879)
@@ -83,21 +73,13 @@
       at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:3665)
       at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:1064)
       at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeUpdate(NewProxyPreparedStatement.java:105)
-      at bookability.aggregations.air.BaseAirAggregation.update(BaseAirAggregation.java:267)
-      at bookability.aggregations.air.BaseAirAggregation.complete(BaseAirAggregation.java:77)
-      at bookability.aggregations.BookabilityAggregationRunner.runAggregations(BookabilityAggregationRunner.java:162)
-      at bookability.aggregations.BookabilityAggregationRunner.run(BookabilityAggregationRunner.java:74)
-      at bookability.AggregationsServlet.doGeneric(AggregationsServlet.java:72)
-      at bookability.AggregationsServlet.doGet(AggregationsServlet.java:43)
-      at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
-      at javax.servlet.http.HttpServlet.service(HttpServlet.java:723)
       at .....
       
       Here is the AppDynamics link that you can use to research this exception :
       
-      https://orbitz-app.saas.appdynamics.com/controller/#/location=APP_ERROR_DASHBOARD&timeRange=Custom_Time_Range.BETWEEN_TIMES.1428945590134.1428944690134.0&application=19&error=465620
+      https://demo.saas.appdynamics.com/controller/#/location=APP_ERROR_DASHBOARD&timeRange=Custom_Time_Range.BETWEEN_TIMES.1428945590134.1428944690134.0&application=19&error=465620
         
-      Please investigate this problem and let us know if you need anymore details. For our SOP see here : <a href="http://54.191.101.210:3000/sop.html">http://54.191.101.210:3000/dashboard.html</a>
+      Please investigate this problem and let us know if you need anymore details. For our SOP see here : <a href="http://trendingexceptions:3000/sop.html">http://trendingexceptions:3000/dashboard.html</a>
       
       If this is an acceptable exception please catch this exception and log it with WARN level.  
       If this is a problem please let us know it was an issue and when it will be resolved.
@@ -105,50 +87,29 @@
       </div>
       <div>
       	<h1>App Teams SOP : For Researching Exceptions</h1>
-      	<p>You have received an email from the SOC team that they have found an exception that was trending in your application. In the email you 
-     	would have a copy of a stacktrace of the exception and a link to AppDynamics for further details. 
+      	<p>You have received an email from the Operations team that they have found an exception that was trending in your application. In the email you 
+     	would have a copy of the stacktraceand a link to AppDynamics for further details. 
      	</p>
      	<p> The trending dashboard can be located at <a href="/dashboard.html">Exception Trending Dashboard</a> this helps the SOC team identify exceptions which are trending.
      	</p>
-     	<p>If you click on the AppDynamics link provided in the email you will be taken to the AppDynamics dashboard for this exception</p>
-     	<p>e.g. https://orbitz-app.saas.appdynamics.com/controller/#/location=APP_ERROR_DASHBOARD&timeRange=Custom_Time_Range.BETWEEN_TIMES.1428945590134.1428944690134.0&application=19&error=465620</p>
-     	<p>Click on the link and you are taken to AppDynamics Login Screen</p> 
+     	<p>If you click on the AppDynamics link provided in the email you will be taken to the AppDynamics Exception dashboard for this exception</p>
      	<p/>
-     	<img src="/sop/appscreen1.png"/>
-     	<p/>
-     	<p>Enter "orbitz-app" for the account name. Then the login screen will change to just have a login button</p>
-     	<img src="/sop/appscreen2.png"/>
-     	<p/>
-     	<p>When you click on login you will be taken to the SSO login screen. Where you can enter your AD credentials</p>
-     	<img src="/sop/appscreen3.png"/>
-     	<p/>
-     	<p>Once you login you will be take to the Exception Dashboard will take a few moments to load up. Once it is loaded you can then view :</p>
      	<img src="/sop/appscreen4.png"/>
      	<p/>
      	<ul>
      		<li>The Exception Details</li>
      		<li>Stack Traces for this exception</li>
      		<li>You can also double click on the graph and you will be taken to the metric browser. From here you can expand the time range e.g. 2 weeks to see the trend over a longer period of time.
-     		<img src="/sop/appscreen5.png"/>
-     		
      		</li>
      	</ul>
-     	<p>The outcome of this excercise is to determine root cause of the exception and to resolve the problem. If this exception is normal and acceptable behavior then please create a story to catch this exception and log it with WARN level or below.
+     	<img src="/sop/appscreen5.png"/>
+     	</p>
+     	<p>The outcome of this excercise is to determine root cause of the exception. If this exception is normal and acceptable behavior then log it with WARN level or below.
      	</p>
      	
       </div>
-      <div>
-      	<h1>Contact</h1>
-      	<p>Please contact Richard Paul richard.paul@appdynamics.com if you have any questions about researching the Trending Exceptions</p>
-      	<p>If the Trending Exception application is not working please contact Richard or Tim.Ehlers@orbitz.com</p>
-      </div>
-
-    </div><!-- /.container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster jquery.min.js - 1.11.2-->
+    </div>
+    
     <script src="/css/jquery.min.js"></script>
     <script src="/css/bootstrap.min.js"></script>
   </body>

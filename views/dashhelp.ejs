@@ -1,55 +1,124 @@
-<html>
-<head>
-   <link rel="stylesheet" type="text/css" href="help/style.css" />
-</head>
-<body>
-<p>The Exception Dashboard shows only Exceptions that are trending.</p>
-<p>We use a statistical regression model to determine if the exceptions per minute metric is trending. The page auto refreshes after it has cycled through
-all the tiers. We project out 15 minutes into the future to create a trending factor which is the next 15 minute average value divided by the last 2 weeks average value.
-Based on this trending factor we highlight the bubbles. If you click through on the bubbles, we will show you the exceptions that are causing the trends</p>
-<p>We will now describe the graphs and the elements in the legend section. Describe some of our concepts and followed by the features</p>
-<p>Legend</p>
-<img src="/help/screen1.png"/>
-<ul>
-<li>PRODUCTION - 3 TRAVELPORT-UAPI = This is the Environment name - Trending Factor + Tiername</li>
-<li>Y Axis = shows the value of the metrics. This metric is the number of exceptions per minute in that tier.</li>
-<li>Blue Graph = Exception Per Minute</li>
-<li>Green Graph = The Last 2 week average</li>
-<li>Red Line = This is the statistical linear regression model based on the metric values per minute for the last 20 minutes.</li>
-<li>2 Week Avg :54 = This is the 2 week average value.</li>
-<li>Last 20 Mins : 141 @ 9:24 pm = This is the exceptions per minute average for the last 20 minutes. 141 is the average value. @ 9:24 pm is the last minute value recorded</li> 
-<li>Next 15 Mins : 196 = Using the linear regression model, we project that in the next 15 minutes e.g. @ 9:39 pm the exceptions per minute average will be 196.</li>
-</ul>
-<img src="/help/screen2.png"/>
-<ul>
-<li>2 Week Avg :54 = This is the last 2 week avarage for the exceptions per minute metric</li>
-<li>Last 2 Week = This is the Blue Graph</li>
-</ul>
-<img src="/help/screen3.png"/>
-<ul>
-<li>If there are multiple tiers that have trending exceptions. Then the outer bubble represents the environment.</li>
-<li>The inner bubble shows the Trending Factor and the Tier name.</li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Exception Trending SOP</title>
 
-<p>Concepts</p>
-<p>Trending Factor</p>
-<p>The Trending Factor is calculated by dividing the next 15 minute average value by the 2 week average value. e.g. if in the next 15 minutes
-the average value is projected to be 100 and the last 2 week avarage value is 10 then the Trending Factor is 10.</p>
-<p>The bubbles are colored coded based on :
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/help.css" rel="stylesheet">
+
+  </head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+          	<li class="active"><a class="active" href="/dashhelp.html">Trending Exceptions</a></li>
+            <li><a href="/sop.html">SOP</a></li>
+          </ul>
+        </div>
+      </div>
+</nav>
+<div class="container">
+      <div>
+        <h1>Trending Exceptions</h1>
+<h2>Scenarios</h2>
+<p>In an environment where there is a large volume of exceptions, it is very difficult to determine if an exception is the root cause or if it is normal. 
+You run into the following scenarios :
+<ul>
+<li>
+Average response times are directly related to the number of exceptions being generated.
+</li>
+<li>
+It is very difficult to setup baselines for individual errors.
+</li>
+<li>
+There is a production impairment associated with an exception which is occurring frequently enough that exception per minute metric is very high. Viewing this
+metric over a longer period of time can identify when this problem occurred or if it normally happens in the system from time to time.
+</li>
+<li>
+A certain feature that is not always used, generates errors consistently with the exception being logged. The exception per minute metric is very low, but the feature is 100% 
+broken.
+</li>
+<li>
+Is an exception new and associated with a code release. Also the question of what changed that would cause this exception.
+</li>
+</ul>
+</p>
+
+<h2>Health Rules?</h2>
+
+<p>
+In the attempt to deal with these scenarios, we can setup AppDynamics health rules to capture when the errors deviate from their normal baselines. 
+Then you encounter these scenarios:
+<ul>
+<li>
+If you create a general rule for any exception in the system. Then you will may get too many alerts to look into, especially if some exceptions are normal and have peak and low periods
+throughout the day.
+</li>
+<li>
+To deal with the noise you might be tempted to increase the time window to analyze the data e.g. instead of checking just the last 30 mins, check the last 2 hours. This may
+result in the alert not being affective and not allowing you to proactively identify the exception as it is occurring.
+</li>
+<li>
+Only setup health rules for key exceptions. You will miss any new toxic exceptions.
+</li>
+</ul> 
+</p>
+
+<h2>Detecting Trends?</h2>
+<p>This solution integrates with AppDynamics and queries the exception count per Application/Tier and determines using a statistical linear 
+regression model if the exception per minute metric is trending. When a trend is determined then it is graphed and the Application + Tier is 
+displayed in a bubble chart along with a graph that shows the 20 min data, linear regression model best fit line, 15 min projection in the future
+and the 2 week data.
+<img src="/help/pic1.png"/>
+</p>
+
+<h2>Feature Highlights</h2>
+<ul>
+<li>Extremely fast to display the charts, just hover over the Application and Tier bubble to get trending charts. The charts show last 20 minutes of data, future 15 minute projection and last 2 week trend.</li>
+<li>Quickly identify trending patterns visually to see when problems started occurring. </li>
+<li>Linear Regression Model Statistical Analysis is used to draw Best Fit Line (The red chart line seen in the 20 minute graph). We then use this model to project the exceptions per minute 15 minutes in the future.</li>
+<li>Drill in to the bubbles to find out which exceptions are causing the trend.</li>
+<li>
+The bubbles are colored coded based on :
 <ul>
 <li>Trending Factor < 10 : Grey</li>
 <li>Trending Factor > 10 and < 50: Yellow</li>
 <li>Trending Factor > 50 : Red</li>
 </ul>
-</p>
-<p>Features</p>
-<p>Graph Rotation</p>
-<p>The Graphs will be rotated through based on Trending Factor descending order</p>
-<p>Highlight Bubble</p>
-<img src="/help/screen4.png"/>
-<p>If you mouse over a bubble then the graph will be displayed on the right</p>
-<p>Click on Bubble</p>
-<p>If you click on a bubble you will be taken to the Tier dashboard. This will show you which exceptions are trending</p>
-<img src="/help/screen5.png"/>
+</li>
+</ul>
+
+<h2>Trending Charts</h2>
+<img src="/help/screen1.png"/>
+<p></p>
+<ul>
+<li>PRODUCTION - 3 MyApp = This is the AppDynamics Application name - The Trending Factor + The Tiername</li>
+<li>Y Axis = The minute average of the exception per minute metric. This metric is the number of exceptions per minute for that tier.</li>
+<li>X Axis = The minute value</li>
+<li>Blue chart line = Exception Per Minute</li>
+<li>Green chart line = The Last 2 week average</li>
+<li>Red chart line = This is the statistical linear regression model based on the metric values per minute for the last 20 minutes.</li>
+<li>2 Week Avg :54 = This is the 2 week average value.</li>
+<li>Last 20 Mins : 141 @ 9:24 pm = This is the exceptions per minute average for the last 20 minutes, 141 is the average minute value and 9:24 pm is the last minute value recorded</li> 
+<li>Next 15 Mins : 196 = Using the linear regression model, we project that in the next 15 minutes the exceptions per minute average will be 196.</li>
+</ul>
+<img src="/help/screen2.png"/>
+<ul>
+<li>Blue chart line = The exception per minute metric for this tier for the last two weeks</li>
+<li>Green chart line = The average across the 2 weeks</li>
+<li>2 Week Avg :54 = This is the last 2 week avarage for the exceptions per minute metric</li>
+<li>Last 2 Week = This is the Blue Graph</li>
+</ul>
 </body>
 </html>
