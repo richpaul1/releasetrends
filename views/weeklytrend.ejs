@@ -1,0 +1,72 @@
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<div>Select Metric :
+<select id="metric">
+</select>
+</div>
+<div><span>Select Week :<input type="text" id="datepicker"></span></div>
+<div>
+<script>
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function getDateSelected(){
+	return $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();
+}
+
+function getSelectedMetric(){
+	return $('#metric').val();
+}
+
+$(document).ready(function(){
+	var datePicker = $("#datepicker");
+    datePicker.datepicker({
+        "dateFormat": "mm-dd-yy",
+        "maxDate": new Date(),
+        onSelect: function(date) {
+            var newUrl = "/weeklytrendview.html?date="+getDateSelected()+"&metricId="+getSelectedMetric(); 
+  			window.location.assign(newUrl);	
+        },
+        beforeShowDay: function(date){ 
+ 			var day = date.getDay(); 
+  			return [day == 1||day == 2||day == 3||day == 4||day == 5,""];
+		}
+    })
+    .attr("readonly", true);
+    var dateParam = getParameterByName("date");
+    
+    if(!dateParam) {
+		datePicker.datepicker('setDate', new Date());
+	}else{
+		datePicker.datepicker('setDate', dateParam);
+	}
+	
+    $.getJSON('/metricstotrendjson', function(data){
+	  	//clear the current content of the select
+	  	$('#metric').html('');
+	 
+	 	console.log(JSON.stringify(data));
+	 	console.log(data.length);
+	  	//iterate over the data and append a select option
+	  	data.forEach(function(val){
+	  	console.log(val);
+	    	$('#metric').append('<option value="' + val.id + '">' + val.metricName +'</option>');
+	  	})
+	});
+    
+});
+	
+</script>
+</body>
+</html>

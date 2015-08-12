@@ -26,6 +26,8 @@ var fetch = function(controller,url, parentCallBack){
 		}
 	};
 	
+	log.debug("options :"+JSON.stringify(options));
+	
 	var callback = function(response) {
 		response.on('data', function(chunk) {
 			str += chunk;
@@ -36,8 +38,8 @@ var fetch = function(controller,url, parentCallBack){
 		})
 
 		response.on('end', function() {
-			//log.debug("url :"+url);
-			//log.debug("response :"+str);
+			log.debug("url :"+url);
+			log.debug("response :"+str);
 			parentCallBack(str);
 		});
 	}.bind(this)
@@ -63,8 +65,6 @@ exports.getTiersJson = function(app,callback) {
 
 exports.getTierMinMetric = function (tier,callback){
 	var url = "/controller/rest/applications/"+tier.appid+"/metric-data?metric-path=Overall%20Application%20Performance%7C"+tier.name+"%7CExceptions%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins="+minDuration+"&output=JSON&rollup=false";
-	log.debug("url :"+url);
-	//log.debug("response :"+str);
 	fetch(tier.controller,url,callback);
 }
 
@@ -149,6 +149,11 @@ exports.fetchErrorsAndExceptionsWeeklyAverage = function (app,callback){
 
 exports.fetchErrorsAndExceptionsMinuteAverage = function (app,callback){
 	var url = "/controller/rest/applications/"+app.id+"/metric-data?metric-path=Errors|"+app.tier+"|*|Errors%20per%20Minute&time-range-type=BEFORE_NOW&duration-in-mins="+btMinDuration+"&output=JSON&rollup=false";
+	fetch(app.controller,url,callback);
+}
+
+exports.fetchMetrics = function (app,url,callback){
+	log.debug("URL : "+url);
 	fetch(app.controller,url,callback);
 }
 

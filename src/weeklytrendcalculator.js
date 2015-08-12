@@ -1,5 +1,5 @@
 var log4js = require('log4js');
-var log = log4js.getLogger("trend");
+var log = log4js.getLogger("trendcalculator");
 var config = require('../config.json');
 
 var calclog = function(message) {
@@ -21,9 +21,15 @@ exports.calculateTrend = function(record,callback) {
 	var x = [];
 	var y = [];
 	var count = 1;
-	record.getMinuteMetrics().forEach(function(minmetric) {
-		x.push(count++);
-		y.push(minmetric.value);
+	
+	//log.debug(JSON.stringify(record));
+	
+	
+	record.metricData[0].metricValues.forEach(function(minmetric) {
+		if(minmetric.value > 0){
+			x.push(count++);
+			y.push(minmetric.value);
+		}
 	});
 
 	calclog("x = " + x);
@@ -32,20 +38,7 @@ exports.calculateTrend = function(record,callback) {
 	var xavg = average(x);
 	var yavg = average(y);
 	
-	var weeklyAverage = record.getWeeklyAverage();
-	
-	if (!weeklyAverage) {
-		weeklyAverage = 1;
-	}else if(yavg <= weeklyAverage){
-		//it is not trending
-		record.getMetricRecord().trend = "F";
-		callback(record.getMetricRecord());
-		return;
-	}
-	
-
-	calclog("xavg = " + xavg);
-	calclog("yavg = " + yavg);
+	record.avgvalue = yavg;
 
 	var XIminusX = [];
 	var XIminusXSquared = [];
@@ -53,10 +46,7 @@ exports.calculateTrend = function(record,callback) {
 	count = 1;
 	var sumXIYI = 0
 	var sumXIXISquared = 0;
-	calclog("check 1");
 
-	calclog("data :"
-			+ JSON.stringify(record.getMinuteMetrics()));
 	x.forEach(function(xval, index) {
 		var xix = x[index] - xavg;
 		XIminusX.push(xix);
@@ -88,25 +78,22 @@ exports.calculateTrend = function(record,callback) {
 	calclog("future15 : " + futureMinuteMark);
 	
 	// generate some factor
-	var factor = futureMinuteMark / weeklyAverage;
+	var factor = futureMinuteMark / yavg;
 	calclog("factor : " + factor);
 
-	var metricRecord = record.getMetricRecord();
-	metricRecord.b1 = b1;
-	metricRecord.b0 = b0;
-	metricRecord.future15 = futureMinuteMark;
-	metricRecord.future1 = futureOneMinuteMark;
-	metricRecord.yavg = yavg;
-	metricRecord.weekavg = weeklyAverage;
-	metricRecord.factor = factor;
-	metricRecord.evaltime = new Date().getMilliseconds();
+	record.b1 = b1;
+	record.b0 = b0;
+	record.future15 = futureMinuteMark;
+	record.future1 = futureOneMinuteMark;
+	record.yavg = yavg;
+	record.factor = factor;
+	record.evaltime = new Date().getMilliseconds();
 	var trend = false;
 	if (factor > parseInt(config.trending_factor) && futureMinuteMark > futureOneMinuteMark) {
-		metricRecord.trend = "T";
+		record.trend = "T";
 		trend = true;
 	} else {
-		metricRecord.trend = "F";
+		record.trend = "F";
 	}
-	callback(metricRecord);
-	
+	callback(record);
 }
