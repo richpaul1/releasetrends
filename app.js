@@ -25,6 +25,8 @@ var app = express();
 
 var init = function(){
 	
+	var trendAnalyzer = childProcess.fork("./src/trendanalyzer");
+	trendAnalyzer.send({"name":"metricanalyzer"});
 	
 }()
 

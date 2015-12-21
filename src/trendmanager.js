@@ -2,10 +2,13 @@ var log4js = require('log4js');
 var log = log4js.getLogger("trendmanager");
 var config = require('../config.json');
 var restManager = require('./restmanager');
-var weeklyTrendManager = require('./weeklytrendcalculator.js');
+var weeklyTrendCalculator = require('./weeklytrendcalculator.js');
 var dateHelper = require('./datehelper.js');
 
 var Q = require('q');
+
+var host = {};
+host.controller = config.controller;
 
 exports.getWeeklyMetrics = function(metricId,date,week){
 	var metricToTrend = exports.findMetricById(metricId);
@@ -21,29 +24,38 @@ exports.findMetricById = function(id){
 	return metricToTrend[0];
 }
 
+exports.fetchGraphMetricsUsingMetricAndDateRange = function(metric,dateRange){
+	//log.debug("fetchGraphMetrics :"+metric);
+	return exports.fetchGraphMetrics(metric.appid, metric["metricPath"], dateRange["startDate"].getTime(), dateRange["endDate"].getTime());
+}
+
 exports.fetchGraphMetrics = function(appID, metricPath,startTime, endTime){
 	
-	var app = {};
-	app.controller = config.controller;
+	//log.debug("appID :"+appID);
+	//log.debug("metricPath :"+metricPath);
+	//log.debug("startTime :"+startTime);
+	//log.debug("endTime :"+endTime);
+	
 	
 	var metricUrl = buildMetricPath(appID,metricPath,startTime,endTime);
+	//log.debug("metricUrl : "+metricUrl);
 	
 	var trendData = {};
 	trendData.metricUrl = metricUrl;
 	trendData.metricName = metricPath;
 	
 	var deferred = Q.defer();
-	exports.fetchMetrics(app, metricUrl, trendData, function(result){
+	exports.fetchMetrics(host, metricUrl, trendData, function(result){
 		trendData.metricData = JSON.parse(result);
-		weeklyTrendManager.calculateTrend(trendData,function(metricValues){
+		weeklyTrendCalculator.calculateTrend(trendData,function(metricValues){
 			deferred.resolve(trendData);
 		});
 	});
 	return deferred.promise;
 }
 
-exports.fetchMetrics = function(app,metricUrl,trendData,callback){
-	restManager.fetchMetrics(app,metricUrl,function(response){
+exports.fetchMetrics = function(host,metricUrl,trendData,callback){
+	restManager.fetchMetrics(host,metricUrl,function(response){
 		callback(response);
 	}); 
 }
@@ -55,4 +67,10 @@ buildMetricPath= function(appID,metricPath,startTime,endTime){
 
 exports.getMetricsToTrend = function(){
 	return config.metricsToTrend;
+}
+
+exports.postEvent = function(metric,trendDataRecord,callback){
+	restManager.postEvent(host,metric,trendDataRecord,function(response){
+		callback(response);
+	});
 }

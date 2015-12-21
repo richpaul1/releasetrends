@@ -3,6 +3,9 @@ var log4js = require('log4js');
 var log = log4js.getLogger("restmanager");
 var https = require("https");
 var http = require("http");
+var querystring = require('querystring');
+var request = require("request");
+
 http.globalAgent.maxSockets = 20;
 var config = require('../config.json');
 
@@ -11,22 +14,20 @@ var minDuration = parseInt(config.trending_use_number_of_mins);
 var btMinDuration = config.bt_use_last_mins;
 var errorCodeSnapshotsDuration = config.error_code_fetch_snapshots;
 
+var auth =  'Basic '+ new Buffer(config.restuser +":"+ config.restpasswrd).toString('base64');
+
 var fetch = function(controller,url, parentCallBack){
 	var str = "";
-	var auth = 'Basic '
-			+ new Buffer(config.restuser +":"+ config.restpasswrd)
-					.toString('base64');
 	
 	var options = {
 		host : controller,
 		method : "GET",
 		path : url,
 		headers : {
-			"Authorization" : auth
+			"Authorization" : auth,
 		}
 	};
-	
-	log.debug("options :"+JSON.stringify(options));
+
 	
 	var callback = function(response) {
 		response.on('data', function(chunk) {
@@ -51,7 +52,36 @@ var fetch = function(controller,url, parentCallBack){
 	}
 }
 
-
+var post = function(controller,postUrl,postData,parentCallBack) {
+	
+	var url = "";
+	if(config.https){
+		url = "https://";
+	}else{
+		url = "http://";
+	}
+	var options = {
+		  uri: url + controller + postUrl,
+		  method: 'POST',
+		  form : postData,
+		  headers:{
+			  'Content-Type': 'application/json',
+			  "Authorization" : auth
+		  }
+	};
+	log.debug(options);
+	request(options, function(error, response, body) {
+			log.debug(error);
+			log.debug(response);
+			log.debug(body);
+	      if(error){
+	    	  parentCallBack(error);
+	      }
+	      if(response){
+	    	  parentCallBack(response);
+	      }
+	});
+}
 
 exports.getAppJson = function(controller,callback) {
 	var url = "/controller/rest/applications?output=JSON";
@@ -153,10 +183,23 @@ exports.fetchErrorsAndExceptionsMinuteAverage = function (app,callback){
 }
 
 exports.fetchMetrics = function (app,url,callback){
-	log.debug("URL : "+url);
 	fetch(app.controller,url,callback);
 }
 
+/**
+ * API for custom event : https://docs.appdynamics.com/display/PRO41/Use+the+AppDynamics+REST+API#UsetheAppDynamicsRESTAPI-CreateEvents
+ * 
+ */
+exports.postEvent = function (app,metric,dataRecord,callback){
+	var postData = {};
+	postData.summary = "Metric "+ metric.metricName +" is Trending. Trend Factor is "+dataRecord.factor+" Trend Threshold is "+config.factor_threshold;
+	postData.eventtype = "CUSTOM";
+	postData.customeventtype = "TREND";
+	postData.severity = "ERROR";
+	postData.comment = "Metric Path "+metric.metricPath;
+	var url = "/controller/rest/applications/"+metric.appid+"/events";
+	post(app.controller,url,postData,callback);
+}
 
 
 
