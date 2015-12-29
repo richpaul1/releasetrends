@@ -123,9 +123,9 @@ d3.json(url, function (metrics, err) {
 		count++;
 	});
 	
-	seriesData.push({"name":"Trend : "+parseInt(b1)+" (Future 1 Week Value : XX)","data":future,"color":"#D91A4A"});
+	seriesData.push({"name":"Trend : "+parseInt(b1)+" (Future 1 Week Value : "+ parseInt(metrics.future15)+")","data":future,"color":"#D91A4A"});
 	seriesData.push({"name":"Average Response Times","data":data,"color":"#4682B4"});
-	seriesData.push({"name":"Avgerage : "+parseInt(weekAverage),"data":avg,"color":"#73C03A"});
+	seriesData.push({"name":"Average : "+parseInt(weekAverage),"data":avg,"color":"#73C03A"});
 	
 	var graph = new Rickshaw.Graph( {
 		element: document.querySelector("#chart"),

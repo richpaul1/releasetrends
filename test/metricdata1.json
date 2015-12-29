@@ -1,884 +1,3455 @@
-[{
-  "frequency": "SIXTY_MIN",
-  "metricId": 356633,
-  "metricName": "BTM|Application Diagnostic Data|SEP:188927|Average Response Time (ms)",
-  "metricPath": "Service End Points|CWG-PST|EJB Advanced Copy|Average Response Time (ms)",
-  "metricValues":   [
-        {
-      "count": 7,
-      "current": 0,
-      "max": 24537,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436900400000,
-      "sum": 70655,
-      "useRange": true,
-      "value": 10094
-    },
-        {
-      "count": 9,
-      "current": 0,
-      "max": 25290,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436904000000,
-      "sum": 113762,
-      "useRange": true,
-      "value": 12640
-    },
-        {
-      "count": 7,
-      "current": 0,
-      "max": 46819,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436907600000,
-      "sum": 170098,
-      "useRange": true,
-      "value": 24300
-    },
-        {
-      "count": 5,
-      "current": 0,
-      "max": 13936,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436911200000,
-      "sum": 52188,
-      "useRange": true,
-      "value": 10438
-    },
-        {
-      "count": 5,
-      "current": 0,
-      "max": 18402,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436914800000,
-      "sum": 58912,
-      "useRange": true,
-      "value": 11782
-    },
-        {
-      "count": 5,
-      "current": 20191,
-      "max": 43534,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436918400000,
-      "sum": 104261,
-      "useRange": true,
-      "value": 20852
-    },
-        {
-      "count": 1,
-      "current": 0,
-      "max": 15595,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436922000000,
-      "sum": 15595,
-      "useRange": true,
-      "value": 15595
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436925600000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436929200000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436932800000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436936400000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436940000000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436943600000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436947200000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436950800000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436954400000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436958000000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 3,
-      "current": 3472,
-      "max": 12432,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436961600000,
-      "sum": 20541,
-      "useRange": true,
-      "value": 6847
-    },
-        {
-      "count": 5,
-      "current": 0,
-      "max": 14763,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436965200000,
-      "sum": 36621,
-      "useRange": true,
-      "value": 7324
-    },
-        {
-      "count": 6,
-      "current": 48,
-      "max": 26373,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436968800000,
-      "sum": 78438,
-      "useRange": true,
-      "value": 13073
-    },
-        {
-      "count": 8,
-      "current": 0,
-      "max": 45119,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436972400000,
-      "sum": 151112,
-      "useRange": true,
-      "value": 18889
-    },
-        {
-      "count": 4,
-      "current": 0,
-      "max": 21029,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436976000000,
-      "sum": 39028,
-      "useRange": true,
-      "value": 9757
-    },
-        {
-      "count": 10,
-      "current": 0,
-      "max": 28742,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436979600000,
-      "sum": 118815,
-      "useRange": true,
-      "value": 11882
-    },
-        {
-      "count": 10,
-      "current": 0,
-      "max": 16857,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436983200000,
-      "sum": 72850,
-      "useRange": true,
-      "value": 7285
-    },
-        {
-      "count": 6,
-      "current": 0,
-      "max": 21200,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436986800000,
-      "sum": 88236,
-      "useRange": true,
-      "value": 14706
-    },
-        {
-      "count": 8,
-      "current": 0,
-      "max": 19700,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436990400000,
-      "sum": 101687,
-      "useRange": true,
-      "value": 12711
-    },
-        {
-      "count": 5,
-      "current": 0,
-      "max": 35680,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436994000000,
-      "sum": 138952,
-      "useRange": true,
-      "value": 27790
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1436997600000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437001200000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437004800000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437008400000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437012000000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437015600000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437019200000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437022800000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437026400000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437030000000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437033600000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437037200000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437040800000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437044400000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 4,
-      "current": 0,
-      "max": 18179,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437048000000,
-      "sum": 34562,
-      "useRange": true,
-      "value": 8641
-    },
-        {
-      "count": 1,
-      "current": 0,
-      "max": 5257,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437051600000,
-      "sum": 5257,
-      "useRange": true,
-      "value": 5257
-    },
-        {
-      "count": 6,
-      "current": 0,
-      "max": 19351,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437055200000,
-      "sum": 59127,
-      "useRange": true,
-      "value": 9855
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437058800000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437062400000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 1,
-      "current": 0,
-      "max": 3786,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437066000000,
-      "sum": 3786,
-      "useRange": true,
-      "value": 3786
-    },
-        {
-      "count": 4,
-      "current": 0,
-      "max": 4771,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437069600000,
-      "sum": 13151,
-      "useRange": true,
-      "value": 3288
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437073200000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 8,
-      "current": 0,
-      "max": 19151,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437076800000,
-      "sum": 102661,
-      "useRange": true,
-      "value": 12833
-    },
-        {
-      "count": 1,
-      "current": 0,
-      "max": 38121,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437080400000,
-      "sum": 38121,
-      "useRange": true,
-      "value": 38121
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437084000000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437087600000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437091200000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437094800000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437098400000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437102000000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437105600000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437109200000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437112800000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437116400000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437120000000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437123600000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437127200000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437130800000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 1,
-      "current": 0,
-      "max": 9355,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437134400000,
-      "sum": 9355,
-      "useRange": true,
-      "value": 9355
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437138000000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437141600000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437145200000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 4,
-      "current": 0,
-      "max": 12396,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437148800000,
-      "sum": 38591,
-      "useRange": true,
-      "value": 9648
-    },
-        {
-      "count": 3,
-      "current": 0,
-      "max": 10739,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437152400000,
-      "sum": 17095,
-      "useRange": true,
-      "value": 5698
-    },
-        {
-      "count": 0,
-      "current": 0,
-      "max": 0,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437156000000,
-      "sum": 0,
-      "useRange": true,
-      "value": 0
-    },
-        {
-      "count": 1,
-      "current": 0,
-      "max": 11055,
-      "min": 0,
-      "occurrences": 0,
-      "standardDeviation": 0,
-      "startTimeInMillis": 1437159600000,
-      "sum": 11055,
-      "useRange": true,
-      "value": 11055
-    }
-  ]
-}]
+[
+	{
+		"frequency": "SIXTY_MIN",
+		"metricId": 195230,
+		"metricName": "BTM|Application Diagnostic Data|SEP:58109|Average Response Time (ms)",
+		"metricPath": "Service End Points|CWG-PST|EJB Advanced Copy|Average Response Time (ms)",
+		"metricValues": 
+		[
+			{
+				"count": 1,
+				"current": 0,
+				"max": 14779,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1448971200000,
+				"sum": 14779,
+				"useRange": true,
+				"value": 14779
+			},
+
+			{
+				"count": 6,
+				"current": 0,
+				"max": 49193,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1448974800000,
+				"sum": 111296,
+				"useRange": true,
+				"value": 18549
+			},
+
+			{
+				"count": 9,
+				"current": 0,
+				"max": 44275,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1448978400000,
+				"sum": 181738,
+				"useRange": true,
+				"value": 20193
+			},
+
+			{
+				"count": 23,
+				"current": 31205,
+				"max": 60821,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1448982000000,
+				"sum": 592533,
+				"useRange": true,
+				"value": 25762
+			},
+
+			{
+				"count": 6,
+				"current": 0,
+				"max": 43285,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1448985600000,
+				"sum": 150485,
+				"useRange": true,
+				"value": 25081
+			},
+
+			{
+				"count": 13,
+				"current": 0,
+				"max": 44866,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1448989200000,
+				"sum": 251996,
+				"useRange": true,
+				"value": 19384
+			},
+
+			{
+				"count": 6,
+				"current": 0,
+				"max": 45098,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1448992800000,
+				"sum": 113402,
+				"useRange": true,
+				"value": 18900
+			},
+
+			{
+				"count": 14,
+				"current": 0,
+				"max": 54805,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1448996400000,
+				"sum": 354413,
+				"useRange": true,
+				"value": 25315
+			},
+
+			{
+				"count": 15,
+				"current": 6403,
+				"max": 59269,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449000000000,
+				"sum": 377337,
+				"useRange": true,
+				"value": 25156
+			},
+
+			{
+				"count": 15,
+				"current": 20437,
+				"max": 52919,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449003600000,
+				"sum": 360327,
+				"useRange": true,
+				"value": 24022
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 60271,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449007200000,
+				"sum": 84533,
+				"useRange": true,
+				"value": 28178
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449010800000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 28688,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449014400000,
+				"sum": 33745,
+				"useRange": true,
+				"value": 11248
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449018000000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 2973,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449021600000,
+				"sum": 2973,
+				"useRange": true,
+				"value": 2973
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449025200000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 30367,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449050400000,
+				"sum": 30367,
+				"useRange": true,
+				"value": 30367
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 9578,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449054000000,
+				"sum": 9578,
+				"useRange": true,
+				"value": 9578
+			},
+
+			{
+				"count": 6,
+				"current": 0,
+				"max": 31493,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449057600000,
+				"sum": 88210,
+				"useRange": true,
+				"value": 14702
+			},
+
+			{
+				"count": 11,
+				"current": 0,
+				"max": 33683,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449061200000,
+				"sum": 149969,
+				"useRange": true,
+				"value": 13634
+			},
+
+			{
+				"count": 27,
+				"current": 14543,
+				"max": 43954,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449064800000,
+				"sum": 443728,
+				"useRange": true,
+				"value": 16434
+			},
+
+			{
+				"count": 13,
+				"current": 0,
+				"max": 52906,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449068400000,
+				"sum": 233512,
+				"useRange": true,
+				"value": 17962
+			},
+
+			{
+				"count": 14,
+				"current": 0,
+				"max": 40496,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449072000000,
+				"sum": 258294,
+				"useRange": true,
+				"value": 18450
+			},
+
+			{
+				"count": 8,
+				"current": 0,
+				"max": 52522,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449075600000,
+				"sum": 208173,
+				"useRange": true,
+				"value": 26022
+			},
+
+			{
+				"count": 12,
+				"current": 0,
+				"max": 43307,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449079200000,
+				"sum": 192044,
+				"useRange": true,
+				"value": 16004
+			},
+
+			{
+				"count": 16,
+				"current": 0,
+				"max": 59705,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449082800000,
+				"sum": 326471,
+				"useRange": true,
+				"value": 20404
+			},
+
+			{
+				"count": 18,
+				"current": 20735,
+				"max": 57759,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449086400000,
+				"sum": 391029,
+				"useRange": true,
+				"value": 21724
+			},
+
+			{
+				"count": 12,
+				"current": 0,
+				"max": 55406,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449090000000,
+				"sum": 275292,
+				"useRange": true,
+				"value": 22941
+			},
+
+			{
+				"count": 9,
+				"current": 0,
+				"max": 43670,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449093600000,
+				"sum": 217046,
+				"useRange": true,
+				"value": 24116
+			},
+
+			{
+				"count": 2,
+				"current": 0,
+				"max": 15125,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449097200000,
+				"sum": 28343,
+				"useRange": true,
+				"value": 14172
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449100800000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 5,
+				"current": 0,
+				"max": 24577,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449144000000,
+				"sum": 55815,
+				"useRange": true,
+				"value": 11163
+			},
+
+			{
+				"count": 11,
+				"current": 0,
+				"max": 39290,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449147600000,
+				"sum": 301449,
+				"useRange": true,
+				"value": 27404
+			},
+
+			{
+				"count": 11,
+				"current": 0,
+				"max": 60203,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449151200000,
+				"sum": 273100,
+				"useRange": true,
+				"value": 24827
+			},
+
+			{
+				"count": 14,
+				"current": 45458,
+				"max": 45458,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449154800000,
+				"sum": 314794,
+				"useRange": true,
+				"value": 22485
+			},
+
+			{
+				"count": 13,
+				"current": 0,
+				"max": 41540,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449158400000,
+				"sum": 264972,
+				"useRange": true,
+				"value": 20382
+			},
+
+			{
+				"count": 16,
+				"current": 0,
+				"max": 37130,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449162000000,
+				"sum": 295948,
+				"useRange": true,
+				"value": 18497
+			},
+
+			{
+				"count": 8,
+				"current": 0,
+				"max": 45660,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449165600000,
+				"sum": 207453,
+				"useRange": true,
+				"value": 25932
+			},
+
+			{
+				"count": 21,
+				"current": 0,
+				"max": 50280,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449169200000,
+				"sum": 451120,
+				"useRange": true,
+				"value": 21482
+			},
+
+			{
+				"count": 24,
+				"current": 0,
+				"max": 69374,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449172800000,
+				"sum": 626387,
+				"useRange": true,
+				"value": 26099
+			},
+
+			{
+				"count": 18,
+				"current": 13103,
+				"max": 49578,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449176400000,
+				"sum": 394227,
+				"useRange": true,
+				"value": 21902
+			},
+
+			{
+				"count": 7,
+				"current": 0,
+				"max": 47033,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449180000000,
+				"sum": 231485,
+				"useRange": true,
+				"value": 33069
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 4121,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449183600000,
+				"sum": 4121,
+				"useRange": true,
+				"value": 4121
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449187200000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 5,
+				"current": 0,
+				"max": 24495,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449234000000,
+				"sum": 75730,
+				"useRange": true,
+				"value": 15146
+			},
+
+			{
+				"count": 15,
+				"current": 0,
+				"max": 40809,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449237600000,
+				"sum": 356877,
+				"useRange": true,
+				"value": 23792
+			},
+
+			{
+				"count": 10,
+				"current": 0,
+				"max": 43795,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449241200000,
+				"sum": 240991,
+				"useRange": true,
+				"value": 24099
+			},
+
+			{
+				"count": 15,
+				"current": 0,
+				"max": 42376,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449244800000,
+				"sum": 280611,
+				"useRange": true,
+				"value": 18707
+			},
+
+			{
+				"count": 15,
+				"current": 0,
+				"max": 68080,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449248400000,
+				"sum": 246690,
+				"useRange": true,
+				"value": 16446
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 58744,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449252000000,
+				"sum": 129301,
+				"useRange": true,
+				"value": 43100
+			},
+
+			{
+				"count": 6,
+				"current": 0,
+				"max": 41185,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449255600000,
+				"sum": 128751,
+				"useRange": true,
+				"value": 21459
+			},
+
+			{
+				"count": 4,
+				"current": 0,
+				"max": 73573,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449259200000,
+				"sum": 151075,
+				"useRange": true,
+				"value": 37769
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 40200,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449262800000,
+				"sum": 74318,
+				"useRange": true,
+				"value": 24773
+			},
+
+			{
+				"count": 4,
+				"current": 0,
+				"max": 17558,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449266400000,
+				"sum": 44887,
+				"useRange": true,
+				"value": 11222
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 23420,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449270000000,
+				"sum": 23420,
+				"useRange": true,
+				"value": 23420
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449273600000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 4270,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449327600000,
+				"sum": 4270,
+				"useRange": true,
+				"value": 4270
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 28735,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449331200000,
+				"sum": 28735,
+				"useRange": true,
+				"value": 28735
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449334800000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 2446,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449342000000,
+				"sum": 2446,
+				"useRange": true,
+				"value": 2446
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449345600000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 22875,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449349200000,
+				"sum": 68160,
+				"useRange": true,
+				"value": 22720
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449352800000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 36845,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449489600000,
+				"sum": 58580,
+				"useRange": true,
+				"value": 19527
+			},
+
+			{
+				"count": 5,
+				"current": 0,
+				"max": 31893,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449493200000,
+				"sum": 92076,
+				"useRange": true,
+				"value": 18415
+			},
+
+			{
+				"count": 8,
+				"current": 0,
+				"max": 44900,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449496800000,
+				"sum": 217859,
+				"useRange": true,
+				"value": 27232
+			},
+
+			{
+				"count": 8,
+				"current": 0,
+				"max": 52843,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449500400000,
+				"sum": 182938,
+				"useRange": true,
+				"value": 22867
+			},
+
+			{
+				"count": 16,
+				"current": 0,
+				"max": 42837,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449504000000,
+				"sum": 227537,
+				"useRange": true,
+				"value": 14221
+			},
+
+			{
+				"count": 9,
+				"current": 0,
+				"max": 55035,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449507600000,
+				"sum": 144903,
+				"useRange": true,
+				"value": 16100
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 51900,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449511200000,
+				"sum": 123845,
+				"useRange": true,
+				"value": 41282
+			},
+
+			{
+				"count": 17,
+				"current": 12315,
+				"max": 61388,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449514800000,
+				"sum": 366826,
+				"useRange": true,
+				"value": 21578
+			},
+
+			{
+				"count": 12,
+				"current": 0,
+				"max": 31050,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449518400000,
+				"sum": 223443,
+				"useRange": true,
+				"value": 18620
+			},
+
+			{
+				"count": 13,
+				"current": 0,
+				"max": 41159,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449522000000,
+				"sum": 275268,
+				"useRange": true,
+				"value": 21174
+			},
+
+			{
+				"count": 12,
+				"current": 0,
+				"max": 49449,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449525600000,
+				"sum": 188175,
+				"useRange": true,
+				"value": 15681
+			},
+
+			{
+				"count": 5,
+				"current": 0,
+				"max": 57822,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449529200000,
+				"sum": 147497,
+				"useRange": true,
+				"value": 29499
+			},
+
+			{
+				"count": 2,
+				"current": 0,
+				"max": 3058,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449532800000,
+				"sum": 5886,
+				"useRange": true,
+				"value": 2943
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 4337,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449536400000,
+				"sum": 4337,
+				"useRange": true,
+				"value": 4337
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449540000000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 2,
+				"current": 0,
+				"max": 27862,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449576000000,
+				"sum": 31565,
+				"useRange": true,
+				"value": 15783
+			},
+
+			{
+				"count": 8,
+				"current": 22022,
+				"max": 54362,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449579600000,
+				"sum": 176077,
+				"useRange": true,
+				"value": 22010
+			},
+
+			{
+				"count": 21,
+				"current": 25284,
+				"max": 53361,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449583200000,
+				"sum": 404768,
+				"useRange": true,
+				"value": 19275
+			},
+
+			{
+				"count": 27,
+				"current": 0,
+				"max": 47613,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449586800000,
+				"sum": 500475,
+				"useRange": true,
+				"value": 18536
+			},
+
+			{
+				"count": 11,
+				"current": 0,
+				"max": 40947,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449590400000,
+				"sum": 219161,
+				"useRange": true,
+				"value": 19924
+			},
+
+			{
+				"count": 14,
+				"current": 0,
+				"max": 52864,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449594000000,
+				"sum": 404991,
+				"useRange": true,
+				"value": 28928
+			},
+
+			{
+				"count": 15,
+				"current": 9727,
+				"max": 49731,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449597600000,
+				"sum": 360921,
+				"useRange": true,
+				"value": 24061
+			},
+
+			{
+				"count": 14,
+				"current": 0,
+				"max": 45937,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449601200000,
+				"sum": 310909,
+				"useRange": true,
+				"value": 22208
+			},
+
+			{
+				"count": 9,
+				"current": 0,
+				"max": 53152,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449604800000,
+				"sum": 268496,
+				"useRange": true,
+				"value": 29833
+			},
+
+			{
+				"count": 22,
+				"current": 39295,
+				"max": 61495,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449608400000,
+				"sum": 555181,
+				"useRange": true,
+				"value": 25236
+			},
+
+			{
+				"count": 12,
+				"current": 0,
+				"max": 56274,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449612000000,
+				"sum": 229233,
+				"useRange": true,
+				"value": 19103
+			},
+
+			{
+				"count": 4,
+				"current": 0,
+				"max": 58862,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449615600000,
+				"sum": 110414,
+				"useRange": true,
+				"value": 27604
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449619200000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 40387,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449622800000,
+				"sum": 40387,
+				"useRange": true,
+				"value": 40387
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 22798,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449626400000,
+				"sum": 22798,
+				"useRange": true,
+				"value": 22798
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449630000000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 6,
+				"current": 21772,
+				"max": 30517,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449662400000,
+				"sum": 97654,
+				"useRange": true,
+				"value": 16276
+			},
+
+			{
+				"count": 9,
+				"current": 0,
+				"max": 25204,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449666000000,
+				"sum": 92183,
+				"useRange": true,
+				"value": 10243
+			},
+
+			{
+				"count": 18,
+				"current": 0,
+				"max": 53748,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449669600000,
+				"sum": 292549,
+				"useRange": true,
+				"value": 16253
+			},
+
+			{
+				"count": 12,
+				"current": 30842,
+				"max": 66479,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449673200000,
+				"sum": 390884,
+				"useRange": true,
+				"value": 32574
+			},
+
+			{
+				"count": 16,
+				"current": 4893,
+				"max": 61836,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449676800000,
+				"sum": 498013,
+				"useRange": true,
+				"value": 31126
+			},
+
+			{
+				"count": 10,
+				"current": 0,
+				"max": 43609,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449680400000,
+				"sum": 164255,
+				"useRange": true,
+				"value": 16426
+			},
+
+			{
+				"count": 10,
+				"current": 0,
+				"max": 75232,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449684000000,
+				"sum": 264424,
+				"useRange": true,
+				"value": 26442
+			},
+
+			{
+				"count": 12,
+				"current": 0,
+				"max": 52743,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449687600000,
+				"sum": 310439,
+				"useRange": true,
+				"value": 25870
+			},
+
+			{
+				"count": 17,
+				"current": 0,
+				"max": 66698,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449691200000,
+				"sum": 438489,
+				"useRange": true,
+				"value": 25793
+			},
+
+			{
+				"count": 10,
+				"current": 0,
+				"max": 46851,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449694800000,
+				"sum": 180063,
+				"useRange": true,
+				"value": 18006
+			},
+
+			{
+				"count": 5,
+				"current": 0,
+				"max": 27121,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449698400000,
+				"sum": 84334,
+				"useRange": true,
+				"value": 16867
+			},
+
+			{
+				"count": 2,
+				"current": 0,
+				"max": 53618,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449702000000,
+				"sum": 65710,
+				"useRange": true,
+				"value": 32855
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449705600000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 5,
+				"current": 0,
+				"max": 59707,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449748800000,
+				"sum": 126058,
+				"useRange": true,
+				"value": 25212
+			},
+
+			{
+				"count": 13,
+				"current": 0,
+				"max": 43629,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449752400000,
+				"sum": 302833,
+				"useRange": true,
+				"value": 23295
+			},
+
+			{
+				"count": 25,
+				"current": 24889,
+				"max": 74914,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449756000000,
+				"sum": 490253,
+				"useRange": true,
+				"value": 19610
+			},
+
+			{
+				"count": 16,
+				"current": 0,
+				"max": 54450,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449759600000,
+				"sum": 393668,
+				"useRange": true,
+				"value": 24604
+			},
+
+			{
+				"count": 12,
+				"current": 0,
+				"max": 53385,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449763200000,
+				"sum": 291614,
+				"useRange": true,
+				"value": 24301
+			},
+
+			{
+				"count": 19,
+				"current": 0,
+				"max": 65526,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449766800000,
+				"sum": 366679,
+				"useRange": true,
+				"value": 19299
+			},
+
+			{
+				"count": 13,
+				"current": 0,
+				"max": 62670,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449770400000,
+				"sum": 304741,
+				"useRange": true,
+				"value": 23442
+			},
+
+			{
+				"count": 11,
+				"current": 49360,
+				"max": 49360,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449774000000,
+				"sum": 214601,
+				"useRange": true,
+				"value": 19509
+			},
+
+			{
+				"count": 21,
+				"current": 21174,
+				"max": 61635,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449777600000,
+				"sum": 511541,
+				"useRange": true,
+				"value": 24359
+			},
+
+			{
+				"count": 20,
+				"current": 0,
+				"max": 54428,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449781200000,
+				"sum": 456313,
+				"useRange": true,
+				"value": 22816
+			},
+
+			{
+				"count": 14,
+				"current": 0,
+				"max": 53840,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449784800000,
+				"sum": 218969,
+				"useRange": true,
+				"value": 15641
+			},
+
+			{
+				"count": 2,
+				"current": 0,
+				"max": 8194,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449788400000,
+				"sum": 12823,
+				"useRange": true,
+				"value": 6412
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449792000000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 28875,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449835200000,
+				"sum": 62554,
+				"useRange": true,
+				"value": 20851
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 17121,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449838800000,
+				"sum": 41524,
+				"useRange": true,
+				"value": 13841
+			},
+
+			{
+				"count": 11,
+				"current": 0,
+				"max": 40731,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449842400000,
+				"sum": 219149,
+				"useRange": true,
+				"value": 19923
+			},
+
+			{
+				"count": 20,
+				"current": 0,
+				"max": 77372,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449846000000,
+				"sum": 429974,
+				"useRange": true,
+				"value": 21499
+			},
+
+			{
+				"count": 24,
+				"current": 0,
+				"max": 65065,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449849600000,
+				"sum": 648238,
+				"useRange": true,
+				"value": 27010
+			},
+
+			{
+				"count": 12,
+				"current": 0,
+				"max": 57344,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449853200000,
+				"sum": 319312,
+				"useRange": true,
+				"value": 26609
+			},
+
+			{
+				"count": 5,
+				"current": 0,
+				"max": 26300,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449856800000,
+				"sum": 117557,
+				"useRange": true,
+				"value": 23511
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 59812,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449860400000,
+				"sum": 85553,
+				"useRange": true,
+				"value": 28518
+			},
+
+			{
+				"count": 4,
+				"current": 0,
+				"max": 27952,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449864000000,
+				"sum": 67594,
+				"useRange": true,
+				"value": 16899
+			},
+
+			{
+				"count": 11,
+				"current": 0,
+				"max": 36896,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449867600000,
+				"sum": 207340,
+				"useRange": true,
+				"value": 18849
+			},
+
+			{
+				"count": 4,
+				"current": 0,
+				"max": 11642,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449871200000,
+				"sum": 22442,
+				"useRange": true,
+				"value": 5611
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449874800000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 22224,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449882000000,
+				"sum": 22224,
+				"useRange": true,
+				"value": 22224
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449885600000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 2,
+				"current": 0,
+				"max": 39681,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449936000000,
+				"sum": 62490,
+				"useRange": true,
+				"value": 31245
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1449939600000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 43519,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450011600000,
+				"sum": 43519,
+				"useRange": true,
+				"value": 43519
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450015200000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 12468,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450040400000,
+				"sum": 12468,
+				"useRange": true,
+				"value": 12468
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450044000000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 57211,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450090800000,
+				"sum": 57211,
+				"useRange": true,
+				"value": 57211
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 2555,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450094400000,
+				"sum": 2555,
+				"useRange": true,
+				"value": 2555
+			},
+
+			{
+				"count": 7,
+				"current": 0,
+				"max": 38200,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450098000000,
+				"sum": 171986,
+				"useRange": true,
+				"value": 24569
+			},
+
+			{
+				"count": 8,
+				"current": 0,
+				"max": 63711,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450101600000,
+				"sum": 254671,
+				"useRange": true,
+				"value": 31834
+			},
+
+			{
+				"count": 9,
+				"current": 0,
+				"max": 53761,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450105200000,
+				"sum": 248794,
+				"useRange": true,
+				"value": 27644
+			},
+
+			{
+				"count": 25,
+				"current": 0,
+				"max": 51478,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450108800000,
+				"sum": 569430,
+				"useRange": true,
+				"value": 22777
+			},
+
+			{
+				"count": 40,
+				"current": 0,
+				"max": 45001,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450112400000,
+				"sum": 594151,
+				"useRange": true,
+				"value": 14854
+			},
+
+			{
+				"count": 14,
+				"current": 0,
+				"max": 38217,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450116000000,
+				"sum": 336360,
+				"useRange": true,
+				"value": 24026
+			},
+
+			{
+				"count": 20,
+				"current": 0,
+				"max": 67605,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450119600000,
+				"sum": 591038,
+				"useRange": true,
+				"value": 29552
+			},
+
+			{
+				"count": 17,
+				"current": 0,
+				"max": 50914,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450123200000,
+				"sum": 434261,
+				"useRange": true,
+				"value": 25545
+			},
+
+			{
+				"count": 17,
+				"current": 0,
+				"max": 51871,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450126800000,
+				"sum": 199605,
+				"useRange": true,
+				"value": 11741
+			},
+
+			{
+				"count": 5,
+				"current": 0,
+				"max": 58110,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450130400000,
+				"sum": 120319,
+				"useRange": true,
+				"value": 24064
+			},
+
+			{
+				"count": 2,
+				"current": 0,
+				"max": 47633,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450134000000,
+				"sum": 52162,
+				"useRange": true,
+				"value": 26081
+			},
+
+			{
+				"count": 2,
+				"current": 0,
+				"max": 19729,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450137600000,
+				"sum": 36447,
+				"useRange": true,
+				"value": 18224
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450141200000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 5,
+				"current": 0,
+				"max": 12165,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450180800000,
+				"sum": 54858,
+				"useRange": true,
+				"value": 10972
+			},
+
+			{
+				"count": 10,
+				"current": 40541,
+				"max": 27315,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450184400000,
+				"sum": 149126,
+				"useRange": true,
+				"value": 14913
+			},
+
+			{
+				"count": 18,
+				"current": 14528,
+				"max": 102965,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450188000000,
+				"sum": 608243,
+				"useRange": true,
+				"value": 33791
+			},
+
+			{
+				"count": 23,
+				"current": 28291,
+				"max": 105357,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450191600000,
+				"sum": 709651,
+				"useRange": true,
+				"value": 30854
+			},
+
+			{
+				"count": 20,
+				"current": 0,
+				"max": 84915,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450195200000,
+				"sum": 574985,
+				"useRange": true,
+				"value": 28749
+			},
+
+			{
+				"count": 18,
+				"current": 0,
+				"max": 50181,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450198800000,
+				"sum": 393846,
+				"useRange": true,
+				"value": 21880
+			},
+
+			{
+				"count": 17,
+				"current": 0,
+				"max": 81319,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450202400000,
+				"sum": 471382,
+				"useRange": true,
+				"value": 27728
+			},
+
+			{
+				"count": 10,
+				"current": 22555,
+				"max": 44982,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450206000000,
+				"sum": 189285,
+				"useRange": true,
+				"value": 18929
+			},
+
+			{
+				"count": 6,
+				"current": 0,
+				"max": 61276,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450209600000,
+				"sum": 172119,
+				"useRange": true,
+				"value": 28687
+			},
+
+			{
+				"count": 15,
+				"current": 0,
+				"max": 62398,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450213200000,
+				"sum": 427812,
+				"useRange": true,
+				"value": 28521
+			},
+
+			{
+				"count": 5,
+				"current": 0,
+				"max": 59526,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450216800000,
+				"sum": 122810,
+				"useRange": true,
+				"value": 24562
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450220400000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 76500,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450224000000,
+				"sum": 76500,
+				"useRange": true,
+				"value": 76500
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450227600000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 35899,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450234800000,
+				"sum": 35899,
+				"useRange": true,
+				"value": 35899
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450238400000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 2,
+				"current": 0,
+				"max": 25020,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450263600000,
+				"sum": 34047,
+				"useRange": true,
+				"value": 17024
+			},
+
+			{
+				"count": 8,
+				"current": 24022,
+				"max": 24022,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450267200000,
+				"sum": 103496,
+				"useRange": true,
+				"value": 12937
+			},
+
+			{
+				"count": 21,
+				"current": 18841,
+				"max": 42660,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450270800000,
+				"sum": 379500,
+				"useRange": true,
+				"value": 18071
+			},
+
+			{
+				"count": 33,
+				"current": 56302,
+				"max": 66587,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450274400000,
+				"sum": 848537,
+				"useRange": true,
+				"value": 25713
+			},
+
+			{
+				"count": 34,
+				"current": 6826,
+				"max": 69172,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450278000000,
+				"sum": 768891,
+				"useRange": true,
+				"value": 22614
+			},
+
+			{
+				"count": 10,
+				"current": 0,
+				"max": 63204,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450281600000,
+				"sum": 304153,
+				"useRange": true,
+				"value": 30415
+			},
+
+			{
+				"count": 7,
+				"current": 0,
+				"max": 67249,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450285200000,
+				"sum": 186834,
+				"useRange": true,
+				"value": 26691
+			},
+
+			{
+				"count": 7,
+				"current": 0,
+				"max": 52485,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450288800000,
+				"sum": 122661,
+				"useRange": true,
+				"value": 17523
+			},
+
+			{
+				"count": 11,
+				"current": 0,
+				"max": 56843,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450292400000,
+				"sum": 329302,
+				"useRange": true,
+				"value": 29937
+			},
+
+			{
+				"count": 19,
+				"current": 0,
+				"max": 58379,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450296000000,
+				"sum": 506362,
+				"useRange": true,
+				"value": 26651
+			},
+
+			{
+				"count": 19,
+				"current": 0,
+				"max": 53502,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450299600000,
+				"sum": 389359,
+				"useRange": true,
+				"value": 20493
+			},
+
+			{
+				"count": 8,
+				"current": 0,
+				"max": 66317,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450303200000,
+				"sum": 173615,
+				"useRange": true,
+				"value": 21702
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 48271,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450306800000,
+				"sum": 57319,
+				"useRange": true,
+				"value": 19106
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450310400000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 4482,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450317600000,
+				"sum": 4482,
+				"useRange": true,
+				"value": 4482
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450321200000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 4,
+				"current": 0,
+				"max": 14916,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450350000000,
+				"sum": 36388,
+				"useRange": true,
+				"value": 9097
+			},
+
+			{
+				"count": 8,
+				"current": 0,
+				"max": 27498,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450353600000,
+				"sum": 114424,
+				"useRange": true,
+				"value": 14303
+			},
+
+			{
+				"count": 13,
+				"current": 3429,
+				"max": 46798,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450357200000,
+				"sum": 187314,
+				"useRange": true,
+				"value": 14409
+			},
+
+			{
+				"count": 32,
+				"current": 0,
+				"max": 65743,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450360800000,
+				"sum": 634724,
+				"useRange": true,
+				"value": 19835
+			},
+
+			{
+				"count": 21,
+				"current": 5109,
+				"max": 69848,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450364400000,
+				"sum": 498894,
+				"useRange": true,
+				"value": 23757
+			},
+
+			{
+				"count": 27,
+				"current": 54119,
+				"max": 82858,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450368000000,
+				"sum": 708530,
+				"useRange": true,
+				"value": 26242
+			},
+
+			{
+				"count": 21,
+				"current": 0,
+				"max": 49134,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450371600000,
+				"sum": 411252,
+				"useRange": true,
+				"value": 19583
+			},
+
+			{
+				"count": 14,
+				"current": 17448,
+				"max": 53005,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450375200000,
+				"sum": 280838,
+				"useRange": true,
+				"value": 20060
+			},
+
+			{
+				"count": 23,
+				"current": 0,
+				"max": 46412,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450378800000,
+				"sum": 391007,
+				"useRange": true,
+				"value": 17000
+			},
+
+			{
+				"count": 24,
+				"current": 9755,
+				"max": 63180,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450382400000,
+				"sum": 549430,
+				"useRange": true,
+				"value": 22893
+			},
+
+			{
+				"count": 42,
+				"current": 0,
+				"max": 51778,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450386000000,
+				"sum": 905718,
+				"useRange": true,
+				"value": 21565
+			},
+
+			{
+				"count": 8,
+				"current": 0,
+				"max": 50466,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450389600000,
+				"sum": 232599,
+				"useRange": true,
+				"value": 29075
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450393200000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 33305,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450440000000,
+				"sum": 91466,
+				"useRange": true,
+				"value": 30489
+			},
+
+			{
+				"count": 9,
+				"current": 23319,
+				"max": 65831,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450443600000,
+				"sum": 386796,
+				"useRange": true,
+				"value": 42977
+			},
+
+			{
+				"count": 12,
+				"current": 0,
+				"max": 26745,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450447200000,
+				"sum": 201802,
+				"useRange": true,
+				"value": 16817
+			},
+
+			{
+				"count": 25,
+				"current": 0,
+				"max": 58331,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450450800000,
+				"sum": 513986,
+				"useRange": true,
+				"value": 20559
+			},
+
+			{
+				"count": 52,
+				"current": 0,
+				"max": 52376,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450454400000,
+				"sum": 844463,
+				"useRange": true,
+				"value": 16240
+			},
+
+			{
+				"count": 20,
+				"current": 0,
+				"max": 60330,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450458000000,
+				"sum": 447612,
+				"useRange": true,
+				"value": 22381
+			},
+
+			{
+				"count": 9,
+				"current": 0,
+				"max": 36632,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450461600000,
+				"sum": 172697,
+				"useRange": true,
+				"value": 19189
+			},
+
+			{
+				"count": 9,
+				"current": 18135,
+				"max": 64370,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450465200000,
+				"sum": 254902,
+				"useRange": true,
+				"value": 28322
+			},
+
+			{
+				"count": 30,
+				"current": 0,
+				"max": 67777,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450468800000,
+				"sum": 609606,
+				"useRange": true,
+				"value": 20320
+			},
+
+			{
+				"count": 14,
+				"current": 0,
+				"max": 42783,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450472400000,
+				"sum": 257774,
+				"useRange": true,
+				"value": 18412
+			},
+
+			{
+				"count": 10,
+				"current": 0,
+				"max": 38601,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450476000000,
+				"sum": 232424,
+				"useRange": true,
+				"value": 23242
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450479600000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 32974,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450540800000,
+				"sum": 32974,
+				"useRange": true,
+				"value": 32974
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450544400000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 2982,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450616400000,
+				"sum": 2982,
+				"useRange": true,
+				"value": 2982
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450620000000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 16444,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450695600000,
+				"sum": 16444,
+				"useRange": true,
+				"value": 16444
+			},
+
+			{
+				"count": 3,
+				"current": 0,
+				"max": 26774,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450699200000,
+				"sum": 43550,
+				"useRange": true,
+				"value": 14517
+			},
+
+			{
+				"count": 25,
+				"current": 29027,
+				"max": 30768,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450702800000,
+				"sum": 328250,
+				"useRange": true,
+				"value": 13130
+			},
+
+			{
+				"count": 56,
+				"current": 24564,
+				"max": 46386,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450706400000,
+				"sum": 697899,
+				"useRange": true,
+				"value": 12462
+			},
+
+			{
+				"count": 40,
+				"current": 15325,
+				"max": 45239,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450710000000,
+				"sum": 413131,
+				"useRange": true,
+				"value": 10328
+			},
+
+			{
+				"count": 43,
+				"current": 0,
+				"max": 52016,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450713600000,
+				"sum": 436122,
+				"useRange": true,
+				"value": 10142
+			},
+
+			{
+				"count": 39,
+				"current": 3971,
+				"max": 48722,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450717200000,
+				"sum": 554550,
+				"useRange": true,
+				"value": 14219
+			},
+
+			{
+				"count": 16,
+				"current": 0,
+				"max": 44583,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450720800000,
+				"sum": 391838,
+				"useRange": true,
+				"value": 24490
+			},
+
+			{
+				"count": 24,
+				"current": 40657,
+				"max": 43533,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450724400000,
+				"sum": 483663,
+				"useRange": true,
+				"value": 20153
+			},
+
+			{
+				"count": 42,
+				"current": 0,
+				"max": 55722,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450728000000,
+				"sum": 742837,
+				"useRange": true,
+				"value": 17687
+			},
+
+			{
+				"count": 27,
+				"current": 0,
+				"max": 77448,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450731600000,
+				"sum": 523769,
+				"useRange": true,
+				"value": 19399
+			},
+
+			{
+				"count": 10,
+				"current": 0,
+				"max": 29698,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450735200000,
+				"sum": 119995,
+				"useRange": true,
+				"value": 12000
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450738800000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 11310,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450742400000,
+				"sum": 11310,
+				"useRange": true,
+				"value": 11310
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450746000000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 5,
+				"current": 0,
+				"max": 16672,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450785600000,
+				"sum": 42790,
+				"useRange": true,
+				"value": 8558
+			},
+
+			{
+				"count": 26,
+				"current": 0,
+				"max": 47070,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450789200000,
+				"sum": 319119,
+				"useRange": true,
+				"value": 12274
+			},
+
+			{
+				"count": 25,
+				"current": 0,
+				"max": 50837,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450792800000,
+				"sum": 386678,
+				"useRange": true,
+				"value": 15467
+			},
+
+			{
+				"count": 55,
+				"current": 3737,
+				"max": 43538,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450796400000,
+				"sum": 566359,
+				"useRange": true,
+				"value": 10297
+			},
+
+			{
+				"count": 42,
+				"current": 0,
+				"max": 60045,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450800000000,
+				"sum": 417461,
+				"useRange": true,
+				"value": 9940
+			},
+
+			{
+				"count": 22,
+				"current": 63752,
+				"max": 70198,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450803600000,
+				"sum": 691665,
+				"useRange": true,
+				"value": 31439
+			},
+
+			{
+				"count": 16,
+				"current": 0,
+				"max": 63021,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450807200000,
+				"sum": 346742,
+				"useRange": true,
+				"value": 21671
+			},
+
+			{
+				"count": 11,
+				"current": 0,
+				"max": 50996,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450810800000,
+				"sum": 209511,
+				"useRange": true,
+				"value": 19046
+			},
+
+			{
+				"count": 29,
+				"current": 0,
+				"max": 49872,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450814400000,
+				"sum": 570573,
+				"useRange": true,
+				"value": 19675
+			},
+
+			{
+				"count": 23,
+				"current": 0,
+				"max": 62998,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450818000000,
+				"sum": 561967,
+				"useRange": true,
+				"value": 24433
+			},
+
+			{
+				"count": 2,
+				"current": 0,
+				"max": 29195,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450821600000,
+				"sum": 38726,
+				"useRange": true,
+				"value": 19363
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450825200000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 4,
+				"current": 0,
+				"max": 24911,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450872000000,
+				"sum": 38982,
+				"useRange": true,
+				"value": 9746
+			},
+
+			{
+				"count": 6,
+				"current": 0,
+				"max": 51148,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450875600000,
+				"sum": 98106,
+				"useRange": true,
+				"value": 16351
+			},
+
+			{
+				"count": 11,
+				"current": 0,
+				"max": 36559,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450879200000,
+				"sum": 185564,
+				"useRange": true,
+				"value": 16869
+			},
+
+			{
+				"count": 19,
+				"current": 4332,
+				"max": 64932,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450882800000,
+				"sum": 496062,
+				"useRange": true,
+				"value": 26109
+			},
+
+			{
+				"count": 20,
+				"current": 0,
+				"max": 63590,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450886400000,
+				"sum": 474535,
+				"useRange": true,
+				"value": 23727
+			},
+
+			{
+				"count": 19,
+				"current": 0,
+				"max": 52305,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450890000000,
+				"sum": 375047,
+				"useRange": true,
+				"value": 19739
+			},
+
+			{
+				"count": 14,
+				"current": 0,
+				"max": 37157,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450893600000,
+				"sum": 207637,
+				"useRange": true,
+				"value": 14831
+			},
+
+			{
+				"count": 14,
+				"current": 0,
+				"max": 44888,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450897200000,
+				"sum": 305547,
+				"useRange": true,
+				"value": 21825
+			},
+
+			{
+				"count": 17,
+				"current": 31761,
+				"max": 60949,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450900800000,
+				"sum": 514317,
+				"useRange": true,
+				"value": 30254
+			},
+
+			{
+				"count": 13,
+				"current": 0,
+				"max": 55879,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450904400000,
+				"sum": 217302,
+				"useRange": true,
+				"value": 16716
+			},
+
+			{
+				"count": 1,
+				"current": 0,
+				"max": 12361,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450908000000,
+				"sum": 12361,
+				"useRange": true,
+				"value": 12361
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450911600000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			},
+
+			{
+				"count": 2,
+				"current": 0,
+				"max": 34563,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450958400000,
+				"sum": 59033,
+				"useRange": true,
+				"value": 29517
+			},
+
+			{
+				"count": 13,
+				"current": 0,
+				"max": 41106,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450962000000,
+				"sum": 227199,
+				"useRange": true,
+				"value": 17477
+			},
+
+			{
+				"count": 7,
+				"current": 0,
+				"max": 39784,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450965600000,
+				"sum": 106629,
+				"useRange": true,
+				"value": 15233
+			},
+
+			{
+				"count": 17,
+				"current": 0,
+				"max": 56902,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450969200000,
+				"sum": 304344,
+				"useRange": true,
+				"value": 17903
+			},
+
+			{
+				"count": 13,
+				"current": 0,
+				"max": 60225,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450972800000,
+				"sum": 267092,
+				"useRange": true,
+				"value": 20546
+			},
+
+			{
+				"count": 15,
+				"current": 0,
+				"max": 36474,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450976400000,
+				"sum": 221493,
+				"useRange": true,
+				"value": 14766
+			},
+
+			{
+				"count": 13,
+				"current": 0,
+				"max": 27425,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450980000000,
+				"sum": 120179,
+				"useRange": true,
+				"value": 9245
+			},
+
+			{
+				"count": 17,
+				"current": 2406,
+				"max": 30792,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450983600000,
+				"sum": 279491,
+				"useRange": true,
+				"value": 16441
+			},
+
+			{
+				"count": 14,
+				"current": 0,
+				"max": 34970,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450987200000,
+				"sum": 249833,
+				"useRange": true,
+				"value": 17845
+			},
+
+			{
+				"count": 0,
+				"current": 0,
+				"max": 0,
+				"min": 0,
+				"occurrences": 0,
+				"standardDeviation": 0,
+				"startTimeInMillis": 1450990800000,
+				"sum": 0,
+				"useRange": true,
+				"value": 0
+			}
+		]
+	}
+]

@@ -21,9 +21,7 @@ exports.calculateTrend = function(record,callback) {
 	var x = [];
 	var y = [];
 	var count = 1;
-	
-	//log.debug(JSON.stringify(record));
-	
+	calclog(JSON.stringify(record));
 	
 	record.metricData[0].metricValues.forEach(function(minmetric) {
 		if(minmetric.value > 0){
@@ -69,27 +67,26 @@ exports.calculateTrend = function(record,callback) {
 	calclog("b0  = " + b0);
 	calclog("b1  = " + b1);
 
-	// 15 minute future value of y
-	var minute_duration = parseInt(config.trending_use_number_of_mins);
-	var future_minute_duration = parseInt(config.trending_use_future_number_of_mins);
+	// Future value
+	var number_of_days_to_factor_for_trend = config.number_of_days_to_factor_for_trend;
+	var future_duration = (parseInt(config.trending_use_future_number_of_days) * 24) + (number_of_days_to_factor_for_trend*24);
 	
-	var futureOneMinuteMark = b1 * (minute_duration+1) + b0;
-	var futureMinuteMark = b1 * (minute_duration+future_minute_duration) + b0;
-	calclog("future15 : " + futureMinuteMark);
+	var futureMark = (b1 * future_duration) + b0;
+	calclog("future15 : " + futureMark);
 	
 	// generate some factor
-	var factor = futureMinuteMark / yavg;
+	var factor = futureMark / yavg;
 	calclog("factor : " + factor);
 
 	record.b1 = b1;
 	record.b0 = b0;
-	record.future15 = futureMinuteMark;
-	record.future1 = futureOneMinuteMark;
+	record.future15 = futureMark;
+	record.future1 = 0;
 	record.yavg = yavg;
 	record.factor = factor;
 	record.evaltime = new Date().getMilliseconds();
 	var trend = false;
-	if (factor > parseInt(config.trending_factor) && futureMinuteMark > futureOneMinuteMark) {
+	if (factor > parseInt(config.trending_factor)) {
 		record.trend = "T";
 		trend = true;
 	} else {

@@ -9,17 +9,17 @@ var request 		= require("request");
 
 //describe("Functional Testing the sending of custom events", function() {
 //	it('Test Trend Analyzer', function (done) {
-
-	var metric = {};
-	metric.appid = 14;
-	metric.metricName="Metric 1";
-	metric.metricPath = "/Config/Metric/Path";
-	var trendDataRecord = {};
-	trendDataRecord.factor = 10;
-	trendManager.postEvent(metric,trendDataRecord,function(response){
-		callback(response);
-	});
-	
-	
+//
+//	var metric = {};
+//	metric.appid = 14;
+//	metric.metricName="Metric 1";
+//	metric.metricPath = "/Config/Metric/Path";
+//	var trendDataRecord = {};
+//	trendDataRecord.factor = 10;
+//	trendManager.postEvent(metric,trendDataRecord,function(response){
+//		callback(response);
+//	});
+//	
+//	
 //    });
 //});
