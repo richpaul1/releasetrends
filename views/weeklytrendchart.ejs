@@ -108,6 +108,7 @@ d3.json(url, function (metrics, err) {
 	var seriesData = [];
 	var b1 = metrics.b1;
 	var b0 = metrics.b0;
+	var factor = metrics.factor;
 	var maxTime=0;
 	metrics.metricData[0].metricValues.forEach(function (app) {
 		var startTime = app.startTimeInMillis*1;
@@ -123,7 +124,7 @@ d3.json(url, function (metrics, err) {
 		count++;
 	});
 	
-	seriesData.push({"name":"Trend : "+parseInt(b1)+" (Future 1 Week Value : "+ parseInt(metrics.future15)+")","data":future,"color":"#D91A4A"});
+	seriesData.push({"name":"Trend : "+parseInt(factor)+" (Future 1 Week Value : "+ parseInt(metrics.future15)+")","data":future,"color":"#D91A4A"});
 	seriesData.push({"name":"Average Response Times","data":data,"color":"#4682B4"});
 	seriesData.push({"name":"Average : "+parseInt(weekAverage),"data":avg,"color":"#73C03A"});
 	

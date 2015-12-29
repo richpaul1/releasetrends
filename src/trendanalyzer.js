@@ -15,7 +15,7 @@ var debug = function(message) {
 }
 
 process.on('message', function(msg) {
-	exec();
+	analyze();
 })
 
 var exec = function(){
