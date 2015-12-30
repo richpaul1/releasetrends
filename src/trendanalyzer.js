@@ -14,8 +14,12 @@ var debug = function(message) {
 	//log.debug(message);
 }
 
+var info = function(message) {
+	log.info(message);
+}
+
 process.on('message', function(msg) {
-	analyze();
+	exec();
 })
 
 var exec = function(){
@@ -37,15 +41,15 @@ var analyze = function(){
 	var dateRange = getLastWeekDateRange();
 	debug("dateRange :"+JSON.stringify(dateRange));
 	metrics.forEach(function(metric)  {
-		log.debug("metric :"+metric.appid);
+		debug("metric :"+metric.appid);
 		trendManager.fetchGraphMetricsUsingMetricAndDateRange(metric,dateRange).then(function (trendDataRecord) {
-			debug("DateRange :"+dateRange);
-			debug("Metric :"+metric);
-			debug("Trend Factor :"+trendDataRecord.factor);
-			debug("Trend Threshold :"+factorThreshold);
+			info("DateRange :"+JSON.stringify(dateRange));
+			info("Metric :"+JSON.stringify(metric));
+			info("Trend Factor :"+trendDataRecord.factor);
+			info("Trend Threshold :"+factorThreshold);
 			
 			if(trendDataRecord.factor > factorThreshold){
-				debug("Sending Event ...");
+				info("Creating Custom Event "+JSON.stringify(metric));
 				trendManager.postEvent(metric,trendDataRecord);
 			}
 		},log.error);

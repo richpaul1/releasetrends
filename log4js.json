@@ -6,7 +6,7 @@
     { "type":"file", "filename": "log/access.log", "backups": 10, "maxLogSize": 20480, "category": "http","level":"INFO" },
     { "type":"file", "filename": "log/manager.log", "backups": 10, "maxLogSize": 20480, "category": "manager","level":"INFO" },
     { "type":"file", "filename": "log/restmanager.log", "backups": 10, "maxLogSize": 20480, "category": "restmanager","level":"INFO" },
-    { "type":"file", "filename": "log/metricanalyzer.log", "backups": 10, "maxLogSize": 20480, "category": "metricanalyzer","level":"INFO" }
+    { "type":"file", "filename": "log/trendanalyzer.log", "backups": 10, "maxLogSize": 20480, "category": "trendanalyzer","level":"INFO" }
   ],
   "replaceConsole":true
 }

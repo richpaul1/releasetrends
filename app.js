@@ -1,4 +1,5 @@
 var log4js = require('log4js');
+log4js.configure('log4js.json');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
